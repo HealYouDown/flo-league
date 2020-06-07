@@ -1,7 +1,6 @@
 # Flo-League Website
-> A 1v1 PvP elo based Ranking Website
-
-This repository contains the backend and frontend code for the [FloLeague](https://www.flo-league.com) website in the online game Florensia.
+![](/app/static/images/banner.png?raw=True)
+This repository contains the backend and frontend code for the [FloLeague](https://www.flo-league.com), a 1v1 PvP elo based ranking  website for the online MMORPG Florensia.
 
 ## Stack
 |Project|Usage|Homepage|
