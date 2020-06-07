@@ -3,7 +3,7 @@ import os
 from flask import (Blueprint, current_app, render_template, request,
                    send_from_directory)
 
-main_bp = Blueprint(__name__, "main", template_folder="app/static")
+main_bp = Blueprint(__name__, "main")
 
 
 @main_bp.route('/', defaults={'path': ''})
