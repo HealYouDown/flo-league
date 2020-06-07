@@ -56,7 +56,13 @@ const LandingPage = () => {
 
           <GridItem row={3} start={1} end={3} rowS={4} startS={1} endS={2}>
             <H2>{strings.prizesHeader}</H2>
-            <Text>{strings.prizesText}</Text>
+            <Text>
+              <p>{strings.prizesText1}</p>
+              <ul>
+                <li>{strings.prizesText2}</li>
+                <li>{strings.prizesText3}</li>
+              </ul>
+            </Text>
           </GridItem>
         </Grid>
       </ContentWrapper>

@@ -30,7 +30,9 @@ const strings = {
   participateText3: "Once the moderator added all players to the list, the website will randomly match players. Once the matches are generated you can see them when clicking on the 'Matches' tab at the top.",
   participateText4: "When it is your turn to fight the moderator will ask for you to step forward.",
   prizesHeader: "Prizes",
-  prizesText: "",
+  prizesText1: "The following prizes are for each Server (Bergruen / LuxPlena):",
+  prizesText2: "Rank 1-3 each get a unique 90D Dress that shows they are the best of the server.",
+  prizesText3: "Rank 1-3 of each base class (Noble, Mercenary, Saint, Explorer) get each 20 / 14 / 7 Slate Piece of Ancient.",
 
   // Login
   login: "Login",
