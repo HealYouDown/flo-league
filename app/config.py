@@ -15,7 +15,7 @@ class Config:
     # Secret Key
     SECRET_KEY = os.environ.get("SECRET_KEY", default="secret_key")
     # JWT Secret Key
-    JWT_SECRET_KEY = os.environ.get("SECRET_KEY", default="jwt-secret_key")
+    JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", default="jwt-secret_key")
     # Disable JWT Token expiration
     JWT_ACCESS_TOKEN_EXPIRES = False
 
