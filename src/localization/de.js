@@ -51,7 +51,7 @@ const strings = {
   errorMessage: "Ein Error ist aufgetreten. (╯°□°）╯︵ ┻━┻",
 
   // CreateMatches
-  notFound: "Nicht gefunden: {players}",
+  notFound: "Nicht gefunden: {names}",
   startMatchesConfirm: "Spiele starten?",
   alreadyActiveMatchesError: "Es gibt bereits Spiele für diesen Server.",
   searchPlayerPlaceholder: "Spieler suchen",
