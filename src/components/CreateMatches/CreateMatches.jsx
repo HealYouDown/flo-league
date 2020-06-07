@@ -107,7 +107,7 @@ const CreateMatches = (props) => {
     setAddedPlayers([...addedPlayers, ...playerObjects]);
     if (notFound.length >= 1) {
       alert(strings.formatString(strings.notFound, {
-        notFound: notFound.toString(),
+        names: notFound.toString(),
       }))
     }
   }
@@ -179,7 +179,7 @@ const CreateMatches = (props) => {
                   padding="5px 15px"
                   onClick={parseChatlog}
                 >
-                  {strings.parse}
+                  {strings.parseButton}
                 </Button>
               </ChatlogWrapper>
             </ChatlogPlayerColumn>
