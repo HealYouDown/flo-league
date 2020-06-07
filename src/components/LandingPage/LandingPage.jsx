@@ -33,7 +33,7 @@ const LandingPage = () => {
             <Text>
               <ul>
                 <li><b>1.</b> {strings.rule1}</li>
-                <li><b>1.</b> {strings.rule2}</li>
+                <li><b>2.</b> {strings.rule2}</li>
                 <li><b>3.</b> {strings.rule3}</li>
                 <li><b>4.</b> {strings.rule4}</li>
                 <li><b>5.</b> {strings.rule5}</li>
