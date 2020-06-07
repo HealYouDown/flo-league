@@ -25,7 +25,7 @@ const strings = {
   rule7: "Running into spectator crowds is not allowed.",
   rulesInfoText: "We reserve the right to give out penalties to participants or spectators that misbehave.",
   participateHeader: "How to participate",
-  participateText1: "To take part in the league you just have to be present on the island Ron every sunday at 17:00 UTC+0.",
+  participateText1: "To take part in the league you will have to be level 90+. Then just be present on the island Ron every sunday at 17:00 UTC+0 to take part.",
   participateText2: "One of the moderators will ask every round to whisper him via the in-game chat if you want to take part. Every matchday, three rounds will take place. Players do not have to take part in all 3 rounds.",
   participateText3: "Once the moderator added all players to the list, the website will randomly match players. Once the matches are generated you can see them when clicking on the 'Matches' tab at the top.",
   participateText4: "When it is your turn to fight the moderator will ask for you to step forward.",
@@ -49,7 +49,7 @@ const strings = {
   errorMessage: "An error occured. (╯°□°）╯︵ ┻━┻",
 
   // CreateMatches
-  notFound: "Not found: {players}",
+  notFound: "Not found: {names}",
   startMatchesConfirm: "Start matches?",
   alreadyActiveMatchesError: "There are already some active matches for this server.",
   searchPlayerPlaceholder: "Search Player",
