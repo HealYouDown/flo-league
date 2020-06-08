@@ -6,6 +6,7 @@ from app.enums import CharacterClassEnum, ServerEnum
 from app.extensions import db
 from app.helpers import get_utc_time
 from app.models import Player
+import time
 
 try:
     PLAYER_JSON_FILE = sys.argv[1]
@@ -17,28 +18,28 @@ except IndexError:
 
 
 if __name__ == "__main__":
+    start = time.time()
     # Load ranking data
     with open(PLAYER_JSON_FILE, "r") as fp:
-        players: list = json.load(fp)
+        players = {p["name"]: p for p in json.load(fp)}
 
     app = create_app(development=DEV)
 
     with app.app_context():
         # Update existing players
-        for player_obj in Player.query.all():
+        number_of_players = Player.query.count()
+        for index, player_obj in enumerate(Player.query.all()):
             try:
                 # Try to get player ranking data
-                player = next(filter(
-                    lambda p: (p["name"] == player_obj.name
-                               and p["server"] == player_obj.server.value),
-                    players))
-            except StopIteration:
+                player = players[player_obj.name]
+            except KeyError:
                 # Player was not found in ranking
                 player_obj.existing = False
                 continue
 
-            # Delete found player from ranking data to speed up filtering
-            players.remove(player)
+            # Delete found player from ranking data to find out
+            # not yet added players
+            del players[player_obj.name]
 
             # Update player
             for key, value in player.items():
@@ -53,7 +54,7 @@ if __name__ == "__main__":
 
         # All remaining player objects from the ranking are new characters
         new_players = []
-        for player in players:
+        for _, player in players.items():
             new_players.append({
                 "server": ServerEnum(player["server"]),
                 "name": player["name"],
@@ -66,3 +67,5 @@ if __name__ == "__main__":
 
         # Save changes
         db.session.commit()
+
+    print(f"Took {round(time.time() - start, 2)} seconds to update flo-league db")
