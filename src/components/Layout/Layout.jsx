@@ -68,6 +68,7 @@ const Layout = (props) => {
             <option value="de">Deutsch</option>
             <option value="it">Italiano</option>
             <option value="tr">Türk</option>
+            <option value="es">Español</option>
           </LanguageSelect>
         </LinksWrapper>
       </Footer>
