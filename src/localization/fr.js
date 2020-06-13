@@ -10,7 +10,7 @@ const strings = {
   // LandingPage
   homepage: "Accueil",
   aboutHeader: "À propos",
-  aboutText1: "FloLeague est une compétition en 1V1 pour le MMORPG Florensia. Après une première saison réussie en Mai, la saison 2 commencera le {date]. Le classement se base sur un elo-rating similaire aux échecs ou à League of Legends. À la fin de la saison, les gagnants se verront récompensés avec des prix.",
+  aboutText1: "FloLeague est une compétition en 1V1 pour le MMORPG Florensia. Après une première saison réussie en Mai, la saison 2 commencera le {date}. Le classement se base sur un elo-rating similaire aux échecs ou à League of Legends. À la fin de la saison, les gagnants se verront récompensés avec des prix.",
   aboutTextChange: "Nous avons tiré de nombreuses conclusions suite à la première saison et avons en conséquence changé certains aspects de la compétition : ",
   aboutChange1: "Le changement le plus important concerne le système d'essence. À l'inverse des fusions qui étaient interdites lors de la première saison, avoir des essences sur son équipement est autorisé.",
   aboutChange2: "Nous avons également réduit la durée de la saison, passant ainsi de 3 à 2 mois.",
