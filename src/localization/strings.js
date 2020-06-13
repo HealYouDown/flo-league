@@ -5,6 +5,7 @@ import StringsIT from "./it";
 import StringsTR from "./tr";
 import StringsES from "./es";
 import StringsFR from "./fr";
+import StringsPT from "./pt";
 
 const strings = new LocalizedStrings({
   en: StringsEN,
@@ -13,6 +14,7 @@ const strings = new LocalizedStrings({
   it: StringsIT,
   tr: StringsTR,
   es: StringsES,
+  pt: StringsPT,
 })
 
 export default strings;
