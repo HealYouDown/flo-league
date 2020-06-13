@@ -66,6 +66,7 @@ const Layout = (props) => {
           <LanguageSelect onChange={onLanguageChange} value={selectedLanguage}>
             <option value="en">English</option>
             <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
             <option value="it">Italiano</option>
             <option value="tr">Türk</option>
             <option value="es">Español</option>
