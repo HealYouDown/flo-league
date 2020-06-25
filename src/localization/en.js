@@ -14,7 +14,7 @@ const strings = {
   aboutTextChange: "We learned a lot from season 1 and changed a few things:",
   aboutChange1: "The most impactful change will be the Essence System. Unlike the fusion system, essences will be allowed.",
   aboutChange2: "We have also shortened the length of the season from 3 to 2 months.",
-  aboutChange3: "Last, we decided to set a fixed amount of 3 rounds per matchday in order to have a fairer competition.",
+  aboutChange3: "Lastly, we decided to set a fixed amount of 3 rounds per matchday in order to have a fairer competition.",
   rulesHeader: "Rules",
   rule1: "A name change will lead to you starting from the beginning with 1000 points.",
   rule2: "Pets and tamed monsters are not allowed.",
