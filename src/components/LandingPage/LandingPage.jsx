@@ -10,7 +10,7 @@ import strings from "../../localization/strings";
 
 const LandingPage = () => {
   document.title = strings.homepage;
-  const startDate = new Date("Dec 24, 2042 00:00:00")
+  const startDate = new Date("July 12, 2020 00:00:00")
 
   return (
     <>
