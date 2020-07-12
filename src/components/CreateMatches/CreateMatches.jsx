@@ -24,6 +24,7 @@ const CreateMatches = (props) => {
   document.title = strings.createMatchesLink;
 
   const currentServer = props.match.params.server;
+
   const [players, setPlayers] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +39,8 @@ const CreateMatches = (props) => {
     setLoading(true);
     setPlayers(null);
     setSearchResults([]);
-    setAddedPlayers([]);
+
+    setAddedPlayers(JSON.parse(localStorage.getItem(`added-players-${currentServer}`)) || []);
 
     let res;
     getPlayers(currentServer).then(fetchResponse => {
@@ -74,14 +76,18 @@ const CreateMatches = (props) => {
 
   const addPlayer = (player) => {
     if (!addedPlayers.includes(player) && player !== null) {
-      setAddedPlayers([...addedPlayers, player]);
+      let newAddedPlayers = [...addedPlayers, player];
+      localStorage.setItem(`added-players-${currentServer}`, JSON.stringify(newAddedPlayers))
+      setAddedPlayers(newAddedPlayers);
     }
     setSearchResults([]);
     setSearchString("");
   }
 
   const removePlayer = (player) => {
-    setAddedPlayers(addedPlayers.filter(p => p !== player));
+    let newAddedPlayers = addedPlayers.filter(p => p !== player);
+    localStorage.setItem(`added-players-${currentServer}`, JSON.stringify(newAddedPlayers))
+    setAddedPlayers(newAddedPlayers);
   }
 
   const parseChatlog = () => {
