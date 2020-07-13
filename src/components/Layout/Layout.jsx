@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { getImagePath } from "../../helpers";
-import { logoutUser, isLoggedIn, getIdentity } from "../../auth";
+import { logoutUser, isLoggedIn, getIdentity, getToken } from "../../auth";
 import {
   Nav,
   Main,
   Footer,
   LinksWrapper,
   Link,
+  ExternalLink,
   HeaderBrandLogo,
   NavbarExtension,
   LanguageSelect,
@@ -44,6 +45,9 @@ const Layout = (props) => {
             <Link to="#" onClick={logout}>{getIdentity().username}</Link>
             <Link to="/create_matches/bergruen">{strings.createMatchesLink}</Link>
             <Link to="/players/add">{strings.addPlayerLink}</Link>
+            {getIdentity().admin && (
+              <ExternalLink href={`/admin?token=${getToken()}`}>Admin</ExternalLink>
+            )}
           </LinksWrapper>
         </NavbarExtension>
       )}

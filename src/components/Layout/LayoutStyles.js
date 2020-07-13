@@ -31,6 +31,21 @@ const Link = styled(RouterLink)`
   }
 `
 
+const ExternalLink = styled.a`
+  margin: 5px 5px;
+  ${breakpoint("sm")`
+    margin: 5px 30px;
+  `}
+  color: ${props => props.isactive ? "green" : "black"};
+  text-decoration: none;
+  letter-spacing: 1.2px;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`
+
 const HeaderBrandLogo = styled.img`
   height: 50px;
   width: auto;
@@ -75,6 +90,7 @@ export {
   Main,
   Footer,
   LinksWrapper,
+  ExternalLink,
   Link,
   HeaderBrandLogo,
   ContentWrapper,

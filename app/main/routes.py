@@ -15,7 +15,7 @@ def index(path: str):
 @main_bp.route(r"/static/js/<regex('main\.\w{8}.chunk\.js'):fname>")
 @main_bp.route(r"/static/js/<regex('\d\.\w{8}.chunk.js'):fname>")
 def gzipped_bundle(fname):
-    """Returns gzipped version of requested js, if allowed."""        
+    """Returns gzipped version of requested js, if allowed."""
     accept_encoding = request.headers.get('Accept-Encoding', '')
     gzip_supported = "gzip" in accept_encoding
 

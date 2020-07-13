@@ -4,6 +4,7 @@ from app.api.routes import api_bp
 from app.main.routes import main_bp
 from app.config import DevelopmentConfig, ProductionConfig
 from app.extensions import db, jwt
+from app.admin import init_admin
 from app.jwt_loader import user_loader
 from app.converter import RegexConverter
 
@@ -20,6 +21,7 @@ def create_app(development: bool = False) -> Flask:
     # Extensions
     db.init_app(app)
     jwt.init_app(app)
+    init_admin(app)
 
     # Extensions options
     jwt._user_loader_callback = user_loader
