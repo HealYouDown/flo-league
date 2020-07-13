@@ -213,7 +213,9 @@ const PlayerProfile = (props) => {
                                 marginRight={5}
                                 src={getImagePath(`class_icons/male_${opponent.class.key}.png`)}
                               />
-                              <RouterLink to={`/players/${match.server.key}/${opponent.name}`}>{opponent.name}</RouterLink>
+                              <RouterLink to={`/players/${match.server.key}/${opponent.name}`}>
+                                {opponent.name} ({opponent.level_land}/{opponent.level_sea})
+                              </RouterLink>
                             </Flex>
                           </td>
                           <td>{result}</td>
