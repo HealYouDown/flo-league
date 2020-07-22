@@ -92,7 +92,7 @@ const Ranking = (props) => {
                             <ClassIcon
                               width={38}
                               marginRight={5}
-                              src={getImagePath(`class_icons/male_${player.class.key}.png`)}
+                              src={getImagePath(`class_icons/female_${player.class.key}.png`)}
                             />
                             <RouterLink
                               to={`/players/${player.server.key}/${player.name}`}

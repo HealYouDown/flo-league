@@ -211,7 +211,7 @@ const PlayerProfile = (props) => {
                               <ClassIcon
                                 width={38}
                                 marginRight={5}
-                                src={getImagePath(`class_icons/male_${opponent.class.key}.png`)}
+                                src={getImagePath(`class_icons/female_${opponent.class.key}.png`)}
                               />
                               <RouterLink to={`/players/${match.server.key}/${opponent.name}`}>
                                 {opponent.name} ({opponent.level_land}/{opponent.level_sea})

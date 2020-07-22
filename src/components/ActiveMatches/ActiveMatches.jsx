@@ -25,7 +25,7 @@ const Player = ({player, p2_points}) => {
       <ClassIcon
         width={50}
         marginRight={0}
-        src={getImagePath(`class_icons/male_${player.class.key}.png`)}
+        src={getImagePath(`class_icons/female_${player.class.key}.png`)}
       />
       <RouterLink to={`/players/${player.server.key}/${player.name}`}>
         {player.name}
