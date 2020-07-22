@@ -109,7 +109,7 @@ const PlayerProfile = (props) => {
                 <ClassIcon
                   width={50}
                   marginRight={5}
-                  src={getImagePath(`class_icons/male_${player.class.key}.png`)}
+                  src={getImagePath(`class_icons/female_${player.class.key}.png`)}
                 />
                 <PlayerInfoName>{player.name}</PlayerInfoName>
               </Flex>
