@@ -21,7 +21,7 @@ if __name__ == "__main__":
     start = time.time()
     # Load ranking data
     with open(PLAYER_JSON_FILE, "r") as fp:
-        players = {p["name"]: p for p in json.load(fp)}
+        players = {f"{p['server']}.{p['name']}": p for p in json.load(fp)}
 
     app = create_app(development=DEV)
 
@@ -31,7 +31,8 @@ if __name__ == "__main__":
         for index, player_obj in enumerate(Player.query.all()):
             try:
                 # Try to get player ranking data
-                player = players[player_obj.name]
+                key = f"{player_obj.server.value}.{player_obj.name}"
+                player = players[key]
             except KeyError:
                 # Player was not found in ranking
                 player_obj.existing = False
@@ -39,7 +40,7 @@ if __name__ == "__main__":
 
             # Delete found player from ranking data to find out
             # not yet added players
-            del players[player_obj.name]
+            del players[key]
 
             # Update player
             for key, value in player.items():
