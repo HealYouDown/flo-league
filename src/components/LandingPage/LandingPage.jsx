@@ -75,7 +75,7 @@ const LandingPage = () => {
               <p>{strings.participateText2}</p>
               <p>{strings.participateText3}</p>
               <p>{strings.participateText4}</p>
-              <p>The next matchday will be in <DateCountdown dateTo={nextMatchdayDate} mostSignificantFigure="day" numberOfFigures={4} />.</p>
+              {/*<p>The next matchday will be in <DateCountdown dateTo={nextMatchdayDate} mostSignificantFigure="day" numberOfFigures={4} />.</p>*/}
             </Text>
           </GridItem>
 
