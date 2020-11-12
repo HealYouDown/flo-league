@@ -10,11 +10,7 @@ const strings = {
   // LandingPage
   homepage: "Homepage",
   aboutHeader: "Riguardo a",
-  aboutText1: "La FloLeague è una 1v1 PvP league per il MMORPG Florensia. Dopo che la prima stagione finì a maggio, si inizierà con la seconda stagione il {date}. Il ranking della pvp league è basato su un elo-rating simile a chess o League of Legends. Alla fine della stagione i vincitori verranno premiati con dei premi.",
-  aboutTextChange: "Abbiamo imparato molto dalla prima stagione ed abbiamo cambiato qualcosina:",
-  aboutChange1: "Il più grande e forte cambiamento sarà il sistema di essenze. Al contrario del sistema di fusion, il sistema di essenze sarà permesso.",
-  aboutChange2: "Abbiamo anche ridotto il periodo della stagione da 3 a 2 mesi.",
-  aboutChange3: "Infine, abbiamo deciso di mettere un numero fisso di round, che sarà di 3 round per ogni giorno dell'incontro cosicchè si potrà avere una competizione più equa ed onesta.",
+  aboutText: "'FloLeague' è un Torneo PvP 1v1 dell'MMORPG Florensia. La classifica del torneo è basata su un sistema ELO simile agli scacchi o League of Legends. Alla fine della stagione, i vincitori verranno premiati. La stagione inizierà il {date}.",
   rulesHeader: "Regole",
   rule1: "Cambiarsi il nome ti condurrà a riniziare dall'inizio con 1000 punti.",
   rule2: "Pet e mostri Pettati non sono permessi.",
@@ -31,7 +27,7 @@ const strings = {
   participateText4: "Quando sarà il tuo turno per combattere il moderatore ti chiederà di fare un passo avanti.",
   prizesHeader: "Premi",
   prizesText1: "I premi seguenti saranno per entrambi i server (Bergruen / LuxPlena):",
-  prizesText2: "Per chi si classificherà nelle posizioni 1-3 otterrà un dress unico e speciale da 90 giorni, servirà a mostrare sei uno tra i migliori in quel server.",
+  prizesText2: "I primi 5 classificati riceveranno rispettivamente 30k / 20k / 15k / 10k / 5k AP.",
   prizesText3: "Per chi si classificherà nelle posizioni 1-3 di ogni classe base (Nobile, Mercenario, Santo, Esploratore) otterrà ciascuno 20 / 14 / 7 Slate Piece of Ancient.",
 
   // Login

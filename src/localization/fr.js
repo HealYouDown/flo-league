@@ -10,11 +10,7 @@ const strings = {
   // LandingPage
   homepage: "Accueil",
   aboutHeader: "À propos",
-  aboutText1: "FloLeague est une compétition en 1V1 pour le MMORPG Florensia. Après une première saison réussie en Mai, la saison 2 commencera le {date}. Le classement se base sur un elo-rating similaire aux échecs ou à League of Legends. À la fin de la saison, les gagnants se verront récompensés avec des prix.",
-  aboutTextChange: "Nous avons tiré de nombreuses conclusions suite à la première saison et avons en conséquence changé certains aspects de la compétition : ",
-  aboutChange1: "Le changement le plus important concerne le système d'essence. À l'inverse des fusions qui étaient interdites lors de la première saison, avoir des essences sur son équipement est autorisé.",
-  aboutChange2: "Nous avons également réduit la durée de la saison, passant ainsi de 3 à 2 mois.",
-  aboutChange3: "Enfin, nous avons décidé de mettre en place une limite de 3 manches par jour de compétition pour rendre celle-ci plus juste et équitable.",
+  aboutText: "The FloLeague is une compétition en 1 vs 1 pour le MMORPG Florensia. Le classement se base sur un elo-rating similaire aux échecs ou à League of Legends. À la fin de la saison, les gagnants se verront récompensés par des prix. La saison débutera le {date}.",
   rulesHeader: "Règles",
   rule1: "Changer de nom aura pour conséquences de vous ramener à 1000 points, points de base lorsque vous commencez la compétition.",
   rule2: "Les Pets et monstres apprivoisés (avec le sort de Magic Knight) ne sont pas autorisés.",
@@ -31,7 +27,7 @@ const strings = {
   participateText4: "Lorsque c'est à votre tour de combattre, le modérateur de FloLeague vous appelera en chat 'Crier' et vous demandera de venir au centre de l'île pour combattre.",
   prizesHeader: "Récompenses",
   prizesText1: "Les récompenses suivantes sont valables pour chaque serveur (Bergruen/Luxplena) : ",
-  prizesText2: "Les trois meilleurs joueurs recevront une tenue unique limitée à 90 jours montrant qu'ils sont les meilleurs joueurs du serveur. ",
+  prizesText2: "Classements: 1-5 chacun recevra: 30k / 20k / 15k / 10k / 5k d'AP respectivement.",
   prizesText3: "Les trois meilleurs joueurs de chaque classe de base (Noble, Mercenaire, Saint, Explorer) recevront chacun 20/14/7 Slate Piece of Ancient.",
 
   // Login

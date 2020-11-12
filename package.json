@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && gzipper --verbose --include js ./build && after_build.bat",
+    "build": "react-scripts build && gzipper compress --verbose --include js ./build && after_build.bat",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

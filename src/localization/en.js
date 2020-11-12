@@ -10,11 +10,7 @@ const strings = {
   // LandingPage
   homepage: "Homepage",
   aboutHeader: "About",
-  aboutText1: "The FloLeague is a 1v1 PvP league for the MMORPG Florensia. After the first season came to an end in May, we will start season 2 on {date}. The ranking of the league is based on an elo-rating similar to chess or League of Legends. At the end of the season the winners will be awarded with prizes.",
-  aboutTextChange: "We learned a lot from season 1 and changed a few things:",
-  aboutChange1: "The most impactful change will be the Essence System. Unlike the fusion system, essences will be allowed.",
-  aboutChange2: "We have also shortened the length of the season from 3 to 2 months.",
-  aboutChange3: "Lastly, we decided to set a fixed amount of 3 rounds per matchday in order to have a fairer competition.",
+  aboutText: "The FloLeague is a 1v1 PvP league for the MMORPG Florensia. The ranking of the league is based on an elo-rating similar to chess or League of Legends. At the end of the season the winners will be awarded with prizes. The season will start on {date}.",
   rulesHeader: "Rules",
   rule1: "A name change will lead to you starting from the beginning with 1000 points.",
   rule2: "Pets and tamed monsters are not allowed.",
@@ -31,7 +27,7 @@ const strings = {
   participateText4: "When it is your turn to fight the moderator will ask for you to step forward.",
   prizesHeader: "Prizes",
   prizesText1: "The following prizes are for each Server (Bergruen / LuxPlena):",
-  prizesText2: "Rank 1-3 each get a unique 90D Dress that shows they are the best of the server.",
+  prizesText2: "Rank 1-5 each get 30k / 20k / 15k / 10k / 5k AP respectively.",
   prizesText3: "Rank 1-3 of each base class (Noble, Mercenary, Saint, Explorer) get each 20 / 14 / 7 Slate Piece of Ancient.",
 
   // Login

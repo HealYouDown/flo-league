@@ -11,22 +11,21 @@ import DateCountdown from 'react-date-countdown-timer';
 
 const LandingPage = () => {
   document.title = strings.homepage;
-  const startDate = new Date("July 12, 2020 00:00:00")
+  const startDate = new Date("November 22, 2020 00:00:00")
 
   const matchdayDates = [
-    "July 12, 2020 17:00:00 UTC+00:00",
-    "July 19, 2020 17:00:00 UTC+00:00",
-    "July 26, 2020 17:00:00 UTC+00:00",
-    "August 02, 2020 17:00:00 UTC+00:00",
-    "August 09, 2020 17:00:00 UTC+00:00",
-    "August 16, 2020 17:00:00 UTC+00:00",
-    "August 23, 2020 17:00:00 UTC+00:00",
-    "August 30, 2020 17:00:00 UTC+00:00",
+    "November 22, 2020 17:00:00 UTC+00:00",
+    "November 29, 2020 17:00:00 UTC+00:00",
+    "December 06, 2020 17:00:00 UTC+00:00",
+    "December 13, 2020 17:00:00 UTC+00:00",
+    "December 20, 2020 17:00:00 UTC+00:00",
+    "December 27, 2020 17:00:00 UTC+00:00",
+    "January 03, 2021 17:00:00 UTC+00:00",
+    "January 10, 2021 17:00:00 UTC+00:00",
   ];
 
   let nextMatchdayDate;
   for (let i=0; i<matchdayDates.length; i++) {
-    console.log(i);
     let matchdayDate = new Date(matchdayDates[i]);
     let currentDate = new Date();
 
@@ -43,13 +42,7 @@ const LandingPage = () => {
         <Grid>
           <GridItem row={1} start={1} end={3} rowS={1} startS={1} endS={2}>
             <H2>{strings.aboutHeader}</H2>
-            <Text><p>{strings.formatString(strings.aboutText1, {date: startDate.toLocaleDateString()})}</p></Text>
-            <Text>
-              <span>{strings.aboutTextChange}</span><br />
-              <span>{strings.aboutChange1}</span><br />
-              <span>{strings.aboutChange2}</span><br />
-              <span>{strings.aboutChange3}</span><br />
-            </Text>
+            <Text><p>{strings.formatString(strings.aboutText, {date: startDate.toLocaleDateString()})}</p></Text>
           </GridItem>
 
           <GridItem row={2} start={1} end={2} rowS={2} startS={1} endS={2}>
@@ -75,7 +68,7 @@ const LandingPage = () => {
               <p>{strings.participateText2}</p>
               <p>{strings.participateText3}</p>
               <p>{strings.participateText4}</p>
-              {/*<p>The next matchday will be in <DateCountdown dateTo={nextMatchdayDate} mostSignificantFigure="day" numberOfFigures={4} />.</p>*/}
+              <p>The next matchday will be in <DateCountdown dateTo={nextMatchdayDate} mostSignificantFigure="day" numberOfFigures={4} />.</p>
             </Text>
           </GridItem>
 
