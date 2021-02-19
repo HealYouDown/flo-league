@@ -10,7 +10,8 @@ const strings = {
   // LandingPage
   homepage: "Accueil",
   aboutHeader: "À propos",
-  aboutText: "The FloLeague is une compétition en 1 vs 1 pour le MMORPG Florensia. Le classement se base sur un elo-rating similaire aux échecs ou à League of Legends. À la fin de la saison, les gagnants se verront récompensés par des prix. La saison débutera le {date}.",
+  aboutText: "La FloLeague est une ligue PvP en 1v1 pour le MMORPG Florensia. Le classement de la ligue est basé sur le système de classement Elo similaire aux échecs ou à League of Legends. À la fin de la saison, les gagnants recevront des prix. La saison se déroule du {startDate} au {endDate}.",
+  aboutTeam: "Les joueurs suivants font partie de l'équipe des modérateurs de la ligue:",
   rulesHeader: "Règles",
   rule1: "Changer de nom aura pour conséquences de vous ramener à 1000 points, points de base lorsque vous commencez la compétition.",
   rule2: "Les Pets et monstres apprivoisés (avec le sort de Magic Knight) ne sont pas autorisés.",
@@ -26,6 +27,7 @@ const strings = {
   participateText3: "Une fois que le modérateur de FloLeague a récupéré tous les noms des joueurs participants et les a ajouté à une liste, le site crééra de manière aléatoire les différents affrontements entre joueurs. Une fois ceux-ci générés sur le site, vous pourrez les consulter en cliquant sur l'onglet 'Combats' en haut à droite.",
   participateText4: "Lorsque c'est à votre tour de combattre, le modérateur de FloLeague vous appelera en chat 'Crier' et vous demandera de venir au centre de l'île pour combattre.",
   prizesHeader: "Récompenses",
+  prizesDisclaimer: "Pour gagner des prix, vous devrez participer à au moins 8 matchs.",
   prizesText1: "Les récompenses suivantes sont valables pour chaque serveur (Bergruen/Luxplena) : ",
   prizesText2: "Classements: 1-5 chacun recevra: 30k / 20k / 15k / 10k / 5k d'AP respectivement.",
   prizesText3: "Les trois meilleurs joueurs de chaque classe de base (Noble, Mercenaire, Saint, Explorer) recevront chacun 20/14/7 Slate Piece of Ancient.",

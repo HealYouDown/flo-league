@@ -10,7 +10,8 @@ const strings = {
   // LandingPage
   homepage: "Página de inicio",
   aboutHeader: "Acerca de",
-  aboutText: "El FloLeague es una liga PvP 1v1 del MMORPG Florensia. La clasificación de la liga se basa en una clasificación de elo similar al ajedrez o a la del League of Legends. Al final de la temporada los ganadores recibirán premios. La temporada comenzará el {date}.",
+  aboutText: "",
+  aboutTeam: "",
   rulesHeader: "Reglas",
   rule1: "Un cambio de nombre te llevará a empezar desde el principio con 1000 puntos.",
   rule2: "Las mascotas y los monstruos encantados no están permitidos.",
@@ -26,6 +27,7 @@ const strings = {
   participateText3: "Una vez que el moderador haya añadido a todos los jugadores a la lista, la página web emparejará a los jugadores al azar. Una vez que se hayan generado los enfrentamientos, podrás verlos al hacer clic en la pestaña 'Enfrentamientos' en la parte superior.",
   participateText4: "Cuando sea tu turno de pelear, el moderador te pedirá que des un paso al frente.",
   prizesHeader: "Premios",
+  prizesDisclaimer: "",
   prizesText1: "Los siguientes premios para cada Servidor (Berguen / LuxPlena) son:",
   prizesText2: "Los puestos 1-5 obtienen cada uno 30k / 20k / 15k / 10k / 5k AP respectivamente.",
   prizesText3: "Los puestos 1-3 de cada clase base (Noble, Mercenary, Saint, Explorer) obtendrán 20, 14, y 7 Slate Piece of Ancient cada uno.",

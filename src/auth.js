@@ -1,6 +1,6 @@
 import decode from 'jwt-decode';
 
-const KEY = "access_token"
+const KEY = "access_token_v1"
 
 const getToken = () => {
   return localStorage.getItem(KEY) || null;

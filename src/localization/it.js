@@ -10,7 +10,8 @@ const strings = {
   // LandingPage
   homepage: "Homepage",
   aboutHeader: "Riguardo a",
-  aboutText: "'FloLeague' è un Torneo PvP 1v1 dell'MMORPG Florensia. La classifica del torneo è basata su un sistema ELO simile agli scacchi o League of Legends. Alla fine della stagione, i vincitori verranno premiati. La stagione inizierà il {date}.",
+  aboutText: "",
+  aboutTeam: "",
   rulesHeader: "Regole",
   rule1: "Cambiarsi il nome ti condurrà a riniziare dall'inizio con 1000 punti.",
   rule2: "Pet e mostri Pettati non sono permessi.",
@@ -26,6 +27,7 @@ const strings = {
   participateText3: "Una volta che il moderatore avrà aggiunto tutti gli sfidanti in lista, Il sito web comporrà gli incontri in maniera casuale. Una volta che gli incontri saranno generati avrai la possibilità di vederli cliccando su 'Incontri' in alto sulla finestra.",
   participateText4: "Quando sarà il tuo turno per combattere il moderatore ti chiederà di fare un passo avanti.",
   prizesHeader: "Premi",
+  prizesDisclaimer: "",
   prizesText1: "I premi seguenti saranno per entrambi i server (Bergruen / LuxPlena):",
   prizesText2: "I primi 5 classificati riceveranno rispettivamente 30k / 20k / 15k / 10k / 5k AP.",
   prizesText3: "Per chi si classificherà nelle posizioni 1-3 di ogni classe base (Nobile, Mercenario, Santo, Esploratore) otterrà ciascuno 20 / 14 / 7 Slate Piece of Ancient.",

@@ -51,7 +51,7 @@ const Button = styled.button`
 
 const Text = styled.div`
   p, span, ul {
-    color: #292f33;
+    color: ${props => props.textColor ? props.textColor : "#292f33"};
     text-align: justify;
   }
 

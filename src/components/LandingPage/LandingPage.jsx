@@ -11,17 +11,18 @@ import DateCountdown from 'react-date-countdown-timer';
 
 const LandingPage = () => {
   document.title = strings.homepage;
-  const startDate = new Date("November 22, 2020 00:00:00")
+  const startDate = new Date("February 28, 2021 00:00:00");
+  const endDate = new Date("April 18 2021 00:00:00");
 
   const matchdayDates = [
-    "November 22, 2020 17:00:00 UTC+00:00",
-    "November 29, 2020 17:00:00 UTC+00:00",
-    "December 06, 2020 17:00:00 UTC+00:00",
-    "December 13, 2020 17:00:00 UTC+00:00",
-    "December 20, 2020 17:00:00 UTC+00:00",
-    "December 27, 2020 17:00:00 UTC+00:00",
-    "January 03, 2021 17:00:00 UTC+00:00",
-    "January 10, 2021 17:00:00 UTC+00:00",
+    "February 28, 2021 17:00:00 UTC+00:00",
+    "March 07 2021 17:00:00 UTC+00:00",
+    "March 14 2021 17:00:00 UTC+00:00",
+    "March 21 2021 17:00:00 UTC+00:00",
+    "March 28 2021 17:00:00 UTC+00:00",
+    "April 04 2021 17:00:00 UTC+00:00",
+    "April 11 2021 17:00:00 UTC+00:00",
+    "April 18 2021 17:00:00 UTC+00:00"
   ];
 
   let nextMatchdayDate;
@@ -42,7 +43,21 @@ const LandingPage = () => {
         <Grid>
           <GridItem row={1} start={1} end={3} rowS={1} startS={1} endS={2}>
             <H2>{strings.aboutHeader}</H2>
-            <Text><p>{strings.formatString(strings.aboutText, {date: startDate.toLocaleDateString()})}</p></Text>
+            <Text><p>{strings.formatString(strings.aboutText, {startDate: startDate.toLocaleDateString(), endDate: endDate.toLocaleDateString()})}</p></Text>
+            <Text>
+              <p>{strings.aboutTeam}</p>
+              <ul>
+                <li>Eresia [Lux]</li>
+                <li>iWon [Lux]</li>
+                <li>Ragusen [Lux]</li>
+                <li>Vegan [Lux]</li>
+                <li>Jeremy [Ber]</li>
+                <li>Obdachlosi [Ber]</li>
+                <li>Sicsk [Ber]</li>
+                <li>Namica [Ber]</li>
+                <li>Revengation [Lux &amp; Ber]</li>
+              </ul>
+            </Text>
           </GridItem>
 
           <GridItem row={2} start={1} end={2} rowS={2} startS={1} endS={2}>
@@ -74,6 +89,7 @@ const LandingPage = () => {
 
           <GridItem row={3} start={1} end={3} rowS={4} startS={1} endS={2}>
             <H2>{strings.prizesHeader}</H2>
+            <Text textColor="#ef4444"><p>{strings.prizesDisclaimer}</p></Text>
             <Text>
               <p>{strings.prizesText1}</p>
               <ul>

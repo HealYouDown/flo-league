@@ -10,7 +10,8 @@ const strings = {
   // LandingPage
   homepage: "Anasayfa",
   aboutHeader: "Nedir?",
-  aboutText: "FloLeague, MMORPG Florensia için 1v1 PvP ligidir. Lig sıralaması, satranç veya League of Legends'a benzeyen bir Elo derecelendirmesine dayanmaktadır. Sezon sonunda kazananlara ödüller verilecektir. Sezon {date} tarihinde başlayacak.",
+  aboutText: "FloLeague, MMORPG Florensia için bir 1v1 PvP ligidir. Lig sıralaması, satranç veya League of Legends'a benzer bir elo derecesine dayanmaktadır. Sezon sonunda kazananlara ödüller verilecektir. Sezon {startDate} tarihinden {endDate} tarihine kadar devam eder.",
+  aboutTeam: "Aşağıdaki oyuncular lig için Moderatör Ekibi'nin bir parçasıdır:",
   rulesHeader: "Kurallar",
   rule1: "İsim değişikliği sizi yeniden 1000 puandan başlatacaktır.",
   rule2: "Pet ya da evcilleştirilmiş canavarlara izin verilmeyecektir.",
@@ -26,6 +27,7 @@ const strings = {
   participateText3: "Yönetici tüm oyuncuları listelediğinde, site üzerinden rastgele eşleştirmeler yapılacaktır, sitenin yukarısındaki 'Eşleştirmeler' sekmesinde görülebilir.",
   participateText4: "Dövüş sırası size geldiğinde yönetici sizden önce çıkmanızı isteyecek.",
   prizesHeader: "Ödüller",
+  prizesDisclaimer: "Ödül kazanmak için en az 8 maça katılmanız gerekmektedir.",
   prizesText1: "Her iki sunucu (Bergruen/Luxplena) içinde aşağıdaki ödüller geçerlidir:",
   prizesText2: "Sıralama sonucunda derecesi 1-5 olanlar, derecelerine bağlı olarak 30k / 20k / 15k / 10k / 5k AP kazanacaklardır.",
   prizesText3: "Her sınıftan (Noble, Mercenary, Saint, Explorer) ilk üçe girene sırayla 20 / 14 / 7 Slate Piece of Ancient verilecektir.",
