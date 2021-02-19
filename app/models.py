@@ -14,14 +14,11 @@ DateTime = db.DateTime
 Boolean = db.Boolean
 
 
-class Player(db.Model):
+class Player(Model):
     __tablename__ = "player"
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    server = Column(Enum(ServerEnum), nullable=False)
-    existing = Column(Boolean, nullable=False, default=True)
-    added_on = Column(DateTime, nullable=False, default=get_utc_time)
-    updated_on = Column(DateTime, nullable=False, default=get_utc_time)
+    id = Column(Integer, nullable=False, autoincrement=True, primary_key=True)    
 
+    server = Column(Enum(ServerEnum), nullable=False)
     name = Column(String, nullable=False)
     guild = Column(String, nullable=True)
 
@@ -37,6 +34,9 @@ class Player(db.Model):
 
     matches = relationship("Match", primaryjoin=(
         "or_(Player.id == Match.p1_id, Player.id == Match.p2_id)"))
+
+    added_on = Column(DateTime, nullable=False, default=get_utc_time)
+    updated_on = Column(DateTime, nullable=False, default=get_utc_time)
 
     def __repr__(self) -> str:
         return (
