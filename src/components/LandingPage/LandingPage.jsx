@@ -12,7 +12,7 @@ import DateCountdown from 'react-date-countdown-timer';
 const LandingPage = () => {
   document.title = strings.homepage;
   const startDate = new Date("February 28, 2021 00:00:00");
-  const endDate = new Date("May 9 2021 00:00:00");
+  const endDate = new Date("May 16 2021 00:00:00");
 
   const matchdayDates = [
     "February 28, 2021 17:00:00 UTC+00:00",
@@ -26,6 +26,7 @@ const LandingPage = () => {
     "April 25 2021 16:00:00 UTC+00:00",
     "May 2 2021 16:00:00 UTC+00:00",
     "May 9 2021 16:00:00 UTC+00:00",
+    "May 16 2021 16:00:00 UTC+00:00",
   ];
 
   let nextMatchdayDate;
