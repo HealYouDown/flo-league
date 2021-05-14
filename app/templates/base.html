@@ -1,0 +1,73 @@
+{% extends "abstract_base.html" %}
+
+{% block body %}
+<header class="flex flex-col items-center justify-between w-full px-10 py-2 bg-gray-900 md:flex-row">
+    <h1 class="sr-only">Flo-League</h1>
+    <a href="{{url_for('main.index')}}">
+      <img class="min-w-min" src="{{url_for('static', filename='assets/logo_small.png')}}" />
+    </a>
+  
+    <div class="flex flex-col space-x-10 space-y-4 md:space-y-0 md:flex-row">
+      <ul class="flex {{'flex-col' if current_user.is_authenticated}} lg:flex-row space-x-2">
+        <li>
+          <a
+            class="header-link {{'active' if active_page == 'ranking'}}"
+            href="{{url_for('main.ranking', server=server or 'bergruen')}}"
+          >
+            {{_("Ranking")}}
+          </a>
+        </li>
+        <li>
+          <a
+            class="header-link {{'active' if active_page == 'matches'}}"
+            href="{{url_for('main.matches', server=server or 'bergruen')}}"
+          >
+            {{_("Matches")}}
+          </a>
+        </li>
+        {% if current_user.is_authenticated %}
+          <li>
+            <a
+              class="header-link {{'active' if active_page == 'moderating'}}"
+              href="{{url_for('moderating.index')}}"
+            >
+              {{_("Moderating")}}
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    
+      {% if page_has_server_header %}
+      <ul class="flex space-x-5">
+        <li>
+          <a href="{{url_for(request.endpoint, server='bergruen')}}">
+            <img
+              class="server-link-img {{'active' if server == 'bergruen'}}"
+              src="{{url_for('static', filename='assets/icons/bergruen.jpg')}}"
+              alt="bergruen-flag-icon"
+            />
+          </a>
+        </li>
+        <li>
+          <a href="{{url_for(request.endpoint, server='luxplena')}}">
+            <img
+              class="server-link-img {{'active' if server == 'luxplena'}}"
+              src="{{url_for('static', filename='assets/icons/luxplena.jpg')}}"
+              alt="luxplena-flag-icon"
+            />
+          </a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  
+    <div></div>
+</header>
+{% endblock %}
+
+{% block main %}
+<div class="py-5 mx-auto md:max-w-4xl xl:max-w-6xl">
+  {% block content %}
+  {% endblock %}
+</div>
+{% endblock main %}

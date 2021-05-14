@@ -1,0 +1,18 @@
+{% set active_page = "moderating" %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex">
+    <ul class="flex flex-col space-y-5 text-lg text-white">
+        <a href="{{url_for('moderating.create_matches', server='bergruen')}}">
+            [BER] CREATE MATCHES
+        </a>
+        <a href="{{url_for('moderating.create_matches', server='luxplena')}}">
+            [LUX] CREATE MATCHES
+        </a>
+        <a href="{{url_for('auth.logout')}}">
+            LOGOUT
+        </a>
+    </ul>
+</div>
+{% endblock %}

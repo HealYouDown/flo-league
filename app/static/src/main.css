@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    /* Link (Button) Element on the landing page */
+    .landing-page-link {
+        @apply flex items-center px-10 py-6 space-x-2 text-3xl font-semibold text-gray-300 bg-black rounded-lg cursor-pointer bg-opacity-70 hover:text-white hover:bg-opacity-80;
+    }
+
+    /* Tab elements on the landing page */
+    .tab-link {
+        @apply block px-2 py-0.5 md:px-4 md:py-1 lg:px-8 lg:py-2 text-lg md:text-xl lg:text-4xl font-semibold tracking-wide text-white border-b-4 border-transparent;
+    }
+    
+    .tab-link.active {
+        @apply border-yellow-700;
+    }
+
+    /* Header */
+    .header-link {
+        @apply block px-4 py-1 text-xl font-semibold text-center text-gray-300 border-b-2 border-transparent;
+    }
+
+    .header-link.active {
+        @apply text-white border-yellow-600;
+    }
+
+    .server-link-img {
+        @apply w-auto h-8 filter grayscale;
+    }
+
+    .server-link-img.active {
+        @apply grayscale-0;
+    }
+
+    /* Buttons style for setting match winner */
+    .winner-button {
+        @apply px-4 py-2 font-semibold text-white transition-all duration-150 rounded-md ring-2 ring-offset-2 ring-offset-gray-800 ring-opacity-50;
+    }
+
+    .winner-button.team-1 {
+        @apply bg-red-400 hover:bg-red-500 ring-red-500;
+    }
+
+    .winner-button.team-2 {
+        @apply bg-blue-400 hover:bg-blue-500 ring-blue-500;
+    }
+
+    .winner-button.draw {
+        @apply bg-yellow-600 hover:bg-yellow-700 ring-yellow-700;
+    }
+
+}
+
+
+@variants responsive {
+    /* Own two column css variable which can be set on breakpoints */
+    .two-columns {
+        columns: 2;
+    }
+}

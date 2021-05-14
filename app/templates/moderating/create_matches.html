@@ -1,0 +1,237 @@
+{% set active_page = "moderating" %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex justify-center w-full">
+    <div class="grid grid-cols-2 gap-x-20 gap-y-10">
+        <div class="flex items-center justify-center w-full col-span-2 space-x-5">
+            <form
+                method="POST"
+                class="flex flex-col items-center justify-center w-full"
+                onsubmit="return confirm('Really start matches?');"
+            >
+                {{ form.csrf_token }}
+                {{ form.player_ids(class_="hidden") }}
+            
+                <button
+                    type="submit"
+                    class="w-full px-6 py-2 text-white uppercase bg-green-500 rounded-md hover:bg-green-600"
+                >
+                    {{_("Create Matches %(server)s", server=server)}}
+                </button>
+
+                <div class="flex items-center justify-center w-full pt-5 mt-5 space-x-5">
+                    <div>
+                        {{ form.mode_select.label(class="text-white") }}
+                        {{ form.mode_select }}
+                    </div>
+                    <div>
+                        {{ form.is_ranked.label(class="text-white") }}
+                        {{ form.is_ranked }}
+                    </div>
+                    <div>
+                        {{ form.make_teams_fair.label(class="text-white") }}
+                        {{ form.make_teams_fair }}
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="flex flex-col space-y-5">
+            <div>
+                <h2 class="mb-2 text-lg font-semibold text-white border-b-2 border-white">
+                    {{_("Add Player")}}
+                </h2>
+                <input
+                    id="player-search-string"
+                    type="text"
+                    class="w-full mb-2 text-white bg-gray-900"
+                    placeholder="{{_('Search Player')}}"
+                    onkeyup="onPlayerSearchChange()"
+                />
+                <ul class="flex flex-col space-y-2 min-h-[400px] max-h-[400px] overflow-y-scroll" id="player-search-results"></ul>
+            </div>
+            <div>
+                <h2 class="mb-2 text-lg font-semibold text-white border-b-2 border-white">
+                    {{_("Chatlog Parser")}}
+                </h2>
+                <input id="chatlog-keyword" type="text" class="w-full mb-2 text-white bg-gray-900" placeholder="{{_('Enter keyword')}}" />
+                <textarea
+                    class="w-full min-h-[300px] bg-gray-900 text-white"
+                    id="chatlog"
+                    placeholder="{{_('Enter chatlog here')}}"
+                ></textarea>
+                <button
+                    type="button"
+                    class="w-full px-2 py-1.5 mt-2 font-semibold text-white bg-gray-900 border-2 border-transparent rounded-lg hover:border-gray-900 hover:bg-transparent text-md"
+                    onclick="parseChatlog();"
+                >
+                    {{_("Parse")}}
+                </button>
+            </div>
+        </div>
+        <div>
+            <div class="flex items-center w-full mb-2 space-x-5 text-white border-b-2 border-white">
+                <h2 class="text-lg font-semibold">
+                    {{_("Player List")}}
+                </h2>
+                <span id="player-count">0</span>
+                <button onclick="addedPlayerIds = []; update();">Clear</button>
+            </div>
+            <ol id="player-list"></ol>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const players = JSON.parse('{{players|tojson|safe}}');
+    var addedPlayerIds = [];
+    const server = "{{server}}"
+
+    function onPlayerSearchChange() {
+        const searchString = document.getElementById("player-search-string").value.toLowerCase();
+        const resultsElement = document.getElementById("player-search-results");
+
+        // Clear results div
+        resultsElement.textContent = "";
+
+        if (searchString.length > 1) {
+            // Add those players that match the search
+            players.forEach((player) => {
+                if (player.username.toLowerCase().includes(searchString)) {
+                    const element = document.createElement("li");
+                    element.onclick = () => addPlayer(player.id);
+                    element.className = "flex flex-row px-6 py-2 items-center hover:bg-gray-900 cursor-pointer rounded-md"
+                    element.innerHTML = `
+                    <img
+                        class="border-2 border-white border-opacity-75 rounded-full h-[32px] w-auto mr-1.5"
+                        src="/static/assets/class_icons/male/${player.character_class.value}.png"
+                    />
+                    <div class="flex flex-col">
+                        <span class="text-lg text-white">
+                            ${player.username}
+                        </span>
+                    </div>
+                    `;
+
+                    resultsElement.appendChild(element);
+                }
+            });
+        }
+    }
+
+    function addPlayer(id) {
+        if (!addedPlayerIds.includes(id)) {
+            addedPlayerIds.push(id);
+
+            update();
+        }
+    }
+
+    function removePlayer(id) {
+        if (addedPlayerIds.includes(id)) {
+            addedPlayerIds = addedPlayerIds.filter(a_id => a_id !== id);
+        
+            update();
+        }
+    }
+
+    function updatePlayerIDsLocalStorag() {
+        // write ids to local state
+        localStorage.setItem(`player-ids-${server}`, JSON.stringify(addedPlayerIds));
+    }
+
+    function updatePlayerIDsForm() {
+        // add player to form list
+        const container = document.getElementById("player_ids");
+        container.innerHTML = "";
+
+        addedPlayerIds.forEach((id, index) => {
+            const element = document.createElement("li");
+            element.innerHTML = `
+                <input type="hidden" id="player_ids-${index}" name="player_ids-${index}" value=${id} />
+            `
+            container.appendChild(element);
+        })
+    }
+
+    function updatePlayerList() {
+        const playerList = document.getElementById("player-list");
+        playerList.innerHTML = "";
+
+        players.forEach((player) => {
+            if (addedPlayerIds.includes(player.id)) {
+                const element = document.createElement("li");
+                element.onclick = () => removePlayer(player.id);
+                element.className = "flex flex-row px-6 py-2 items-center hover:bg-gray-900 cursor-pointer rounded-md"
+                element.innerHTML = `
+                <img
+                    class="border-2 border-white border-opacity-75 rounded-full h-[32px] w-auto mr-1.5"
+                    src="/static/assets/class_icons/male/${player.character_class.value}.png"
+                />
+                <div class="flex flex-col">
+                    <span class="text-lg leading-none text-white">
+                        ${player.username}
+                    </span>
+                    <span class="text-sm leading-none text-white text-opacity-50">
+                        Lv. ${player.level_land}/${player.level_sea}
+                    </span>
+                </div>
+                `;
+
+                playerList.appendChild(element);
+            }
+        });
+    }
+
+    function parseChatlog() {
+        const chatlog = document.getElementById("chatlog").value;
+        const keyword = document.getElementById("chatlog-keyword").value;
+
+        const regex = new RegExp(`(\\w{1,13}):\\s(${keyword})$`, "i")
+
+        const notFound = [];
+        const playerIDs = [];
+    
+        chatlog.split("\n").forEach(line => {
+            const match = line.trimRight().match(regex);
+            if (match) {
+                const playerName = match[1];
+                const playerObj = players.filter(p => p.username === playerName)[0] || null;
+    
+                if (playerObj && !addedPlayerIds.includes(playerObj.id)) {
+                    playerIDs.push(playerObj.id);
+                } else if (playerObj === null) {
+                    notFound.push(playerName);
+                }
+            }
+        })
+    
+        addedPlayerIds = [...addedPlayerIds, ...playerIDs];
+        update();
+
+        if (notFound.length > 0) {
+            alert("NOT FOUND: " + notFound.toString());
+        }
+    }
+
+    function update() {
+        updatePlayerIDsForm();
+        updatePlayerList();
+        updatePlayerIDsLocalStorag();
+
+        document.getElementById("player-count").innerText = addedPlayerIds.length;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        // Run search to show players after a reload
+        onPlayerSearchChange();
+
+        // Load players from local storage
+        addedPlayerIds = JSON.parse(localStorage.getItem(`player-ids-${server}`)) || [];
+        update();
+    })
+
+</script>
+{% endblock %}

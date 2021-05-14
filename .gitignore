@@ -1,7 +1,8 @@
-/node_modules
-/env
-*.db
-players.json
-package-lock.json
-.vscode/
+.env
 __pycache__/
+node_modules/
+env/
+*.db
+.vscode/
+app/static/dist/*^
+package-lock.json

@@ -1,43 +1,34 @@
 {
   "name": "flo-league",
   "version": "1.0.0",
-  "private": false,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "react": "^16.13.1",
-    "react-date-countdown-timer": "^1.0.4",
-    "react-dom": "^16.13.1",
-    "react-localization": "^1.0.15",
-    "react-scripts": "3.4.1"
+  "description": "",
+  "main": "postcss.config.js",
+  "directories": {
+    "doc": "docs"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build && gzipper compress --verbose --include js ./build && after_build.bat",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build:css": "postcss ./app/static/src/main.css -o ./app/static/dist/css/main.css",
+    "watch:tailwind": "nodemon --watch ./app/templates --watch ./app/static/src --ext css,html --exec npm run build:css"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HealYouDown/flo-league.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HealYouDown/flo-league/issues"
   },
+  "homepage": "https://github.com/HealYouDown/flo-league#readme",
   "devDependencies": {
-    "jwt-decode": "^2.2.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "styled-components": "^5.1.1",
-    "styled-components-breakpoint": "^3.0.0-preview.20"
+    "@tailwindcss/jit": "^0.1.18",
+    "autoprefixer": "^10.2.5",
+    "nodemon": "^2.0.7",
+    "postcss": "^8.2.14",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.1.2"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.2"
   }
 }

@@ -1,7 +1,7 @@
-from flask_jwt_extended import JWTManager
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
-from flask_admin import Admin
+from flask_babel import Babel
 
+login = LoginManager()
 db = SQLAlchemy()
-jwt = JWTManager()
-admin = Admin(name="FloLeague", template_mode="bootstrap3")
+babel = Babel()

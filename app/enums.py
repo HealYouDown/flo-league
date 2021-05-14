@@ -1,30 +1,36 @@
-from enum import Enum
+import enum
 
 
-class ServerEnum(Enum):
-    bergruen = "Bergruen"
-    luxplena = "LuxPlena"
+class Server(enum.Enum):
+    bergruen = "bergruen"
+    luxplena = "luxplena"
 
 
-class CharacterClassEnum(Enum):
-    noble = "Noble"
-    magic_knight = "Magic Knight"
-    court_magician = "Court Magician"
+class CharacterClass(enum.Enum):
+    noble = "noble"
+    magic_knight = "magic_knight"
+    court_magician = "court_magician"
 
-    explorer = "Explorer"
-    sniper = "Sniper"
-    excavator = "Excavator"
+    saint = "saint"
+    priest = "priest"
+    shaman = "shaman"
 
-    saint = "Saint"
-    shaman = "Shaman"
-    priest = "Priest"
+    explorer = "explorer"
+    sniper = "sniper"
+    excavator = "excavator"
 
-    mercenary = "Mercenary"
-    guardian_swordsman = "Guardian Swordsman"
-    gladiator = "Gladiator"
+    mercenary = "mercenary"
+    gladiator = "gladiator"
+    guardian_swordsman = "guardian_swordsman"
 
 
-class MatchWinnerEnum(Enum):
-    player_1 = 0
-    player_2 = 1
-    draw = 2
+class Winner(enum.Enum):
+    draw = 0
+    team_1 = 1
+    team_2 = 2
+
+
+class TeamSize(enum.Enum):
+    one_vs_one = 1
+    two_vs_two = 2
+    three_vs_three = 3
