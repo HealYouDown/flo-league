@@ -1,0 +1,31 @@
+{% set active_page = "moderating" %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex justify-center">
+    <table class="w-full table-fixed">
+        <thead>
+            <tr class="border border-gray-300">
+                <th class="w-1/5 font-semibold text-white border border-gray-300">Date</th>
+                <th class="w-1/6 font-semibold text-white border border-gray-300">Moderator</th>
+                <th class="font-semibold text-white border border-gray-300">Log</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr class="text-white {{'bg-gray-900' if loop.index % 2}} border border-gray-300">
+                <td>
+                    {{ log.date }}
+                </td>
+                <td class="border border-gray-300">
+                    {{ log.moderator.username }} (id={{ log.moderator.id }})
+                </td>
+                <td class="border border-gray-300">
+                    {{ log.message }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

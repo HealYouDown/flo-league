@@ -1,3 +1,4 @@
+from app.utils import add_moderator_log
 import itertools
 import typing
 
@@ -10,7 +11,7 @@ from app.blueprints.moderating.utils import delete_match
 from app.constants import SEASON
 from app.enums import CharacterClass, Server, Winner
 from app.extensions import db
-from app.models import (FinishedMatch, FinishedMatchParticipant, Player,
+from app.models import (FinishedMatch, FinishedMatchParticipant, Log, Player,
                         PlayerStatistics, RunningMatch,
                         RunningMatchParticipant)
 from flask import (Blueprint, abort, make_response, redirect, render_template,
@@ -73,6 +74,12 @@ def create_matches(server: str):
         make_teams_fair = form.make_teams_fair.data
         is_ranked = form.is_ranked.data
 
+        add_moderator_log(
+            f"Created matches for {server.value} with {len(players)} players"
+            f", team_size={team_size}, teams_fair={make_teams_fair}, "
+            f"is_ranked={is_ranked}"
+        )
+
         create_matches_(
             server=server,
             players=players,
@@ -116,8 +123,12 @@ def delete_matches(server: str):
     match_ids = [
         m.id for m in RunningMatch.query.filter(
             RunningMatch.server == server,
-        ).distinct()
+        ).all()
     ]
+
+    add_moderator_log(
+        f"Deleted {len(match_ids)} matches on {server.value}"
+    )
 
     for match_id in match_ids:
         delete_match(match_id, commit_db=False)
@@ -138,9 +149,17 @@ def set_match_winner(match_id: int, winner: str):
     winner: Winner = Winner(winner)
 
     if match.is_ranked:
+        add_moderator_log(
+            f"Set match winner for {match} to {winner.name}"
+        )
+
         set_match_winner_(
             match=match,
             winner=winner,
+        )
+    else:
+        add_moderator_log(
+            f"Deleted unranked match {match}"
         )
 
     # Delete the match obj from database
@@ -203,6 +222,12 @@ def update_match_winner():
                 gettext("Not possible!"),
                 200
             )
+
+    # Log
+    add_moderator_log(
+        f"Updated match winner for match {match} from "
+        f"{match.winner.name} to {new_winner.name}"
+    )
 
     # Reset the statistics for each player
     players = (
@@ -307,6 +332,10 @@ def edit_or_add_player(id: typing.Optional[int] = None):
 
             db.session.commit()
 
+            add_moderator_log(
+                f"Edit player {player}"
+            )
+
             return redirect(url_for("main.player_profile",
                                     server=player.server.value,
                                     id=player.id))
@@ -340,6 +369,10 @@ def edit_or_add_player(id: typing.Optional[int] = None):
             ))
             db.session.commit()
 
+            add_moderator_log(
+                f"Created player {player}"
+            )
+
             return redirect(url_for("main.player_profile",
                                     server=server.value,
                                     id=player.id))
@@ -367,3 +400,19 @@ def edit_or_add_player(id: typing.Optional[int] = None):
         form=form,
         title=title
     )
+
+
+@bp.route("/logs")
+@bp.route("/logs/<int:mod_id>")
+@login_required
+def logs(mod_id: typing.Optional[int] = None):
+    query = Log.query.order_by(Log.date.desc())
+
+    if mod_id:
+        query = query.filter(Log.moderator_id == mod_id)
+
+    logs = query.all()
+
+    return render_template("moderating/logs.html",
+                           title="Logs",
+                           logs=logs)

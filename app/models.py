@@ -1,13 +1,13 @@
 import datetime
 
+from flask_login import UserMixin
 from sqlalchemy import (Boolean, Column, DateTime, Enum, ForeignKey, Integer,
                         String)
 from sqlalchemy.orm import relationship
 
+from app.constants import SEASON
 from app.enums import CharacterClass, Server, Winner
 from app.extensions import db
-from flask_login import UserMixin
-from app.constants import SEASON
 
 
 class Player(db.Model):
@@ -31,8 +31,12 @@ class Player(db.Model):
     def __repr__(self) -> str:
         return (
             "<Player "
-            f"name={self.username} "
-            f"class={self.character_class.value}"
+            f"name={repr(self.username)} "
+            f"class={repr(self.character_class)} "
+            f"server={repr(self.server)} "
+            f"level_land={repr(self.level_land)} "
+            f"level_sea={repr(self.level_sea)} "
+            f"exists={repr(self.exists)}"
             ">"
         )
 
@@ -93,6 +97,22 @@ class RunningMatch(db.Model):
         ),
     )
 
+    def __repr__(self) -> str:
+        team_1 = ", ".join([f"{p.player.username} ({p.player_id})"
+                            for p in self.team_1])
+        team_2 = ", ".join([f"{p.player.username} ({p.player_id})"
+                            for p in self.team_2])
+
+        return (
+            "<RunningMatch "
+            f"id={repr(self.id)} "
+            f"server={repr(self.server)} "
+            f"is_ranked={repr(self.is_ranked)} "
+            f"team_1={repr(team_1)} "
+            f"team_2={repr(team_2)}"
+            ">"
+        )
+
 
 class RunningMatchParticipant(db.Model):
     __tablename__ = "running_match_participant"
@@ -147,6 +167,24 @@ class FinishedMatch(db.Model):
         viewonly=True,
     )
 
+    def __repr__(self) -> str:
+        team_1 = ", ".join([f"{p.username} ({p.player_id})"
+                            for p in self.team_1])
+        team_2 = ", ".join([f"{p.username} ({p.player_id})"
+                            for p in self.team_2])
+
+        return (
+            "<RunningMatch "
+            f"id={repr(self.id)} "
+            f"server={repr(self.server)} "
+            f"season={repr(self.season)} "
+            f"winner={repr(self.winner)} "
+            f"date={repr(self.date)} "
+            f"team_1={repr(team_1)} "
+            f"team_2={repr(team_2)}"
+            ">"
+        )
+
 
 class FinishedMatchParticipant(db.Model):
     __tablename__ = "finished_match_participant"
@@ -172,6 +210,9 @@ class Moderator(db.Model, UserMixin):
     username = Column(String(128), nullable=False)
     password = Column(String(2048), nullable=False)
 
+    def __repr__(self) -> str:
+        return f"<Moderator id={repr(self.id)} name={repr(self.username)}>"
+
 
 class Log(db.Model):
     __tablename__ = "log"
@@ -179,6 +220,9 @@ class Log(db.Model):
     index = Column(Integer, autoincrement=True, primary_key=True)
 
     moderator_id = Column(Integer, ForeignKey("moderator.id"), nullable=False)
-    message = Column(String(256), nullable=False)
+    moderator = relationship("Moderator", foreign_keys=[moderator_id],
+                             lazy="joined")
+
+    message = Column(String(2048), nullable=False)
 
     date = Column(DateTime, default=datetime.datetime.utcnow)

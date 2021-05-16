@@ -1069,6 +1069,12 @@ select {
 .w-auto {
 	width: auto;
 }
+.w-1\/5 {
+	width: 20%;
+}
+.w-1\/6 {
+	width: 16.666667%;
+}
 .min-w-min {
 	min-width: -webkit-min-content;
 	min-width: -moz-min-content;
@@ -1287,6 +1293,10 @@ select {
 }
 .border-transparent {
 	border-color: transparent;
+}
+.border-gray-300 {
+	--tw-border-opacity: 1;
+	border-color: rgba(209, 213, 219, var(--tw-border-opacity));
 }
 .border-opacity-40 {
 	--tw-border-opacity: 0.4;
