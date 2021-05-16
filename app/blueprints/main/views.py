@@ -4,7 +4,7 @@ from app.enums import Server
 from app.extensions import db
 from app.models import (FinishedMatch, FinishedMatchParticipant, Player,
                         PlayerStatistics, RunningMatch)
-from flask import Blueprint, abort, request
+from flask import Blueprint, abort, request, jsonify
 from flask.globals import current_app
 from flask.helpers import send_from_directory
 from flask.templating import render_template
@@ -102,6 +102,21 @@ def matches(server: str):
             RunningMatch.server == server,
         ).all()
     )
+
+    # Check if a json flag is set
+    if int(request.args.get("json", 0)) == 1:
+        json_matches = []
+        for match in matches:
+            match: RunningMatch
+
+            json_matches.append({
+                "id": match.id,
+                "server": server.value,
+                "team_1": [p.player.to_dict() for p in match.team_1],
+                "team_2": [p.player.to_dict() for p in match.team_2],
+            })
+
+        return jsonify(json_matches), 200
 
     return render_template(
         "main/matches.html",

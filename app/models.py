@@ -43,14 +43,8 @@ class Player(db.Model):
            # guild removed because tojson filter from flask
            # does not support some symbols in there
            # "guild": self.guild,
-           "character_class": {
-               "name": self.character_class.name,
-               "value": self.character_class.value,
-           },
-           "server": {
-               "name": self.server.name,
-               "value": self.server.value,
-           },
+           "character_class": self.character_class.value,
+           "server": self.server.value,
            "level_land": self.level_land,
            "level_sea": self.level_sea,
         }
