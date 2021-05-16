@@ -24,6 +24,10 @@ def create_app(development: bool = False) -> Flask:
     else:
         app.config.from_object(ProductionConfig)
 
+    # Jinja2 flags env
+    app.jinja_env.trim_blocks = True
+    app.jinja_env.lstrip_blocks = True
+
     # Register extensions
     register_extensions(app)
 
