@@ -1,5 +1,5 @@
 # Flo-League Website
-![](app\static\assets\logo.png?raw=True)
+![](app/static/assets/logo.png?raw=True)
 This repository contains the code for [FloLeague](https://www.flo-league.com), an elo based ranking website for the MMORPG Florensia.
 
 ## Stack
