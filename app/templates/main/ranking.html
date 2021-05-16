@@ -1,0 +1,76 @@
+{% set active_page = "ranking" %}
+{% set page_has_server_header = True %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-col items-center lg:flex-row lg:items-start">
+    <div class="px-10 lg:sticky lg:top-5 lg:max-w-sm">
+        <h2 class="text-xl font-semibold tracking-wide text-white uppercase">
+            {{_("%(server)s: Season %(season)s", server=server, season=SEASON)}}
+        </h2>
+        <p class="text-white text-opacity-50">
+            {{_("The season runs from %(start_date)s until %(end_date)s.", start_date=format_date(FIRST_DATE), end_date=format_date(LAST_DATE))}}
+        </p>
+        <p class="mt-4 text-white text-opacity-50">
+            {% set next_matchday = next_weekday(weekday=6) %}
+            {% if next_matchday <= LAST_DATE and next_matchday >= FIRST_DATE %}
+            {{_("The next matchday will be on <b>%(date)s</b>.", date=format_date(next_matchday))}}
+            {% endif %}
+        </p>
+    </div>
+    <ol class="flex flex-col items-center flex-grow w-full px-2 mt-3 divide-y divide-gray-500 lg:mt-0 md:px-0">
+        {% if players %}
+            {% for player, statistics in players %}
+            <li class="flex w-full max-w-xl py-4">
+                <div class="min-w-[30px]  md:min-w-[65px] flex justify-center items-center">
+                    <span
+                        class="block text-2xl md:text-4xl text-white text-center
+                        {{' text-[#f3b929]' if loop.index == 1 else ''}}
+                        {{' text-[#73d1d7]' if loop.index == 2 else ''}}
+                        {{' text-[#ad5f33]' if loop.index == 3 else ''}}
+                        "
+                    >
+                        {{loop.index}}
+                    </span>
+                </div>
+                <div class="flex flex-row items-center w-full px-3 space-x-3">
+                    <img
+                        class="border-2 border-white border-opacity-75 rounded-full h-[40px] w-auto md:h-full"
+                        src="{{url_for('static', filename='assets/class_icons/male/' + player.character_class.value + '.png')}}"
+                    />
+                    <div class="flex flex-col items-start flex-grow">
+                        <a href="{{url_for('main.player_profile', server=server, id=player.id)}}" class="text-white">
+                            {{player.username}}
+                        </a>
+                        <span class="text-sm text-white text-opacity-50">
+                            {{_("level %(land)s/%(sea)s", land=player.level_land, sea=player.level_sea)}}
+                        </span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span
+                            class="text-white
+                            {{' text-[#f3b929]' if loop.index == 1 else ''}}
+                            {{' text-[#73d1d7]' if loop.index == 2 else ''}}
+                            {{' text-[#ad5f33]' if loop.index == 3 else ''}}
+                            "
+                        >
+                            <span class="font-semibold">{{statistics.points}}</span> {{_("pts")}}
+                        </span>
+                        <span class="text-sm text-white text-opacity-50">
+                            {{statistics.wins}} : {{statistics.losses}} : {{statistics.draws}}
+                        </span>
+                        <span class="text-xs text-white text-opacity-25">
+                            {{_("W : L : D")}}
+                        </span>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        {% else %}
+        <p class="w-full text-lg text-center text-white text-opacity-75">
+            {{_("No players were found. ¯\_(ツ)_/¯")}}
+        </p>
+        {% endif %}
+    </ol>
+</div>
+{% endblock %}

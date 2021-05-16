@@ -1,0 +1,189 @@
+{% extends "abstract_base.html" %}
+
+{% block main %}
+<div
+    style="background-image: url({{url_for('static', filename='assets/landing_page_image_1.png')}});"
+    class="flex flex-col items-center justify-center h-screen bg-center bg-no-repeat bg-cover filter saturate-150"
+>
+    <div class="flex-grow"></div>
+    <img class="h-24 md:h-36 lg:h-52" src="{{url_for('static', filename='assets/logo.png')}}" />
+    <div class="flex flex-col mt-10 space-y-5 lg:space-x-10 lg:flex-row lg:space-y-0">
+        <a href="{{url_for('main.ranking', server='bergruen')}}" class="landing-page-link">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-yellow-500" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"/>
+            </svg>
+            <span>{{_("Ranking")}}</span>
+        </a>
+        <a href="{{url_for('main.matches', server='bergruen')}}" class="landing-page-link">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-500" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1v-1z"/>
+                <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.373.297.408.408.78 1.05 1.095 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.816-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773-.245-.232-.496-.526-.739-.808-.126-.148-.25-.292-.368-.423-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.423-.243.282-.494.575-.739.808-.398.38-.877.706-1.513.773a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772a2.34 2.34 0 0 1 .433-.335.504.504 0 0 1-.028-.079zm2.036.412c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 0 0-.748 2.295 12.351 12.351 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.504C4.861 9.969 5.978 9.027 8 9.027s3.139.942 3.965 1.855c.164.181.307.348.44.504.214.251.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.354 12.354 0 0 0-.339-2.406 13.753 13.753 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z"/>
+              </svg>
+            <span>{{_("Matches")}}</span>
+        </a>
+    </div>
+    <div class="flex-grow"></div>
+    <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" class="w-20 h-20 text-black text-opacity-80 animate-bounce" fill="none" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+    </svg>
+</div>
+<div
+    style="background-image: url({{url_for('static', filename='assets/landing_page_image_2.png')}}); min-height: 100vh"
+    class="flex flex-col items-center bg-center bg-no-repeat bg-cover"
+>
+    <div class="w-full h-full max-w-xs mt-10 md:mt-20 lg:mt-32 sm:max-w-md md:max-w-2xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl">
+        <!--Tab Navigation-->
+        <ul class="flex items-center justify-between px-5 py-2">
+            <li><a id="first-tablink" class="tab-link" href="#" onclick="showTab(event, 'rules')">{{_("Rules")}}</a></li>
+            <li><a class="tab-link" href="#" onclick="showTab(event, 'explanation')">{{_("How it works")}}</a></li>
+            <li><a class="tab-link" href="#" onclick="showTab(event, 'prizes')">{{_("Prizes")}}</a></li>
+        </ul>
+        
+        {% set default_points = 1000 %}
+        {% set min_level = 100 %}
+        {% set draw_time_m = 3 %}
+        {% set rounds = 4 %}
+        {% set matchdays = 8 %}
+        {% set min_participate = 0.5 %}
+        {% set match_type = "2v2" %}
+        {% set island = "Ron" %}
+        {% set time = "18:00 CET/CEST" %}
+
+        <!--Tab Content-->
+        <div class="px-6 pb-5 mt-4 text-sm text-gray-200 md:mt-8 lg:mt-16 md:text-base lg:text-lg">
+            <div class="hidden tab-content" id="rules">
+                <ol class="list-decimal gap-x-8 md:gap-x-14 lg:gap-x-20 md:two-columns">
+                    <li>
+                        {{_("A name change will lead to you starting from the beginning with 1000 points.")}}
+                    </li>
+                    <li>
+                        {{_("Pets and tamed monsters are not allowed.")}}
+                    </li>
+                    <li>
+                        {{_("You are only allowed to have your own buffs or those from allies in your group. That means, buffs by pets, other players outside of your team or attendance from the lord are not allowed.")}}
+                    </li>
+                    <li>
+                        {{_("All consumable items (e.g. HP/MP potions, Antidote, ...) are not allowed.")}}
+                    </li>
+                    <li>
+                        {{_("Disconnecting while fighting counts as a loss for you. If your ally is able to win alone, you will also receive the win. If you reconnect while a fight is still going on, you are not allowed to continue fighting.")}}
+                    </li>
+                    <li>
+                        {{_("PvPs that last longer than %(time)s minutes count as a draw.", time=draw_time_m)}}
+                    </li>
+                    <li>
+                        {{_("Running into spectator crowds with the aim to get your enemies to lose target is not allowed.")}}
+                    </li>
+                    <li>
+                        {{_("Trolling or not wanting to fight with anyone in your team will lead to immediate disqualification for the whole season.")}}
+                    </li>
+                    <li>
+                        {{_("Abusing bugs (for example walking backwards or with shift while having thorn trunk on you) is obviously not allowed and will yield to you losing the match.")}}
+                    </li>
+                    <li>
+                        {{_("While equipment trading is technically allowed, we would prefer it, if anyone plays with their own equipment.")}}
+                    </li>
+                </ol>
+                <p class="mt-10">
+                    {{_("Not following any rules will lead to disqualification for the day, the whole season or for the whole event for all seasons to come. Trolling the event may also affect your personal accounts.")}}
+                    <br />
+                    {{_("It is up to the moderators to evaluate each case individually and decide when a punishment should be given.")}}
+                </p>
+            </div>
+            <div class="hidden tab-content" id="explanation">
+                <div>
+                    <p>
+                        {{_("To take part in the league, you will need to have a character on land level %(min_level)s or higher. To then participate, just be present on %(island)s at %(time)s.", min_level=min_level, island=island, time=time)}}
+                    </p>
+                    
+                    <br/>
+
+                    <p>
+                        {{_("The moderators of the league will collect all names (you will most likely have to wishper a certain word to them) and enter them into the system, which will then generate random matches.")}}
+                        <br />
+                        {{_("You can read more about the matchmaking algorithm on <a class='text-blue-500' target='_blank' href='https://www.github.com/HealYouDown/flo-league'>Github</a>.")}}
+                    </p>
+
+                    <br/>
+
+                    <p>
+                        {{_("When it is your turn to fight, the moderators will announce your name and you will have to step foward.")}}
+                        <br/>
+                        {{_("Depending on the type of match, you will have to form a party to start.")}}
+                    </p>
+
+                    <br/>
+
+                    <p>
+                        {{_("Each sunday, we will have %(amount_matches)s rounds of %(match_type)s matches. You do not need to take part in all rounds.", amount_matches=rounds, match_type=match_type)}}
+                    </p>
+                </div>
+            </div>
+            <div class="hidden tab-content" id="prizes">
+                <div>
+                    <p class="text-red-400">
+                        {{_("In order to earn prizes, you will have to participate in at least %(num1)s out of %(num2)s possible matches.", num1=(min_participate * (rounds * matchdays))|int, num2=(rounds * matchdays))}}
+                    </p>
+                    <br>
+                    <p>
+                        {{_("Prizes are given out for both LuxPlena and Bergruen. There are two types of prizes to win: One for the overall rank and one for a class-based rank.")}}
+                    </p>
+                    <p>
+                        <h2 class="font-bold">
+                            {{_("Overall rank")}}
+                            <small class="text-sm text-white text-opacity-50">{{_("Given out to rank 1-5 on each server ranking.")}}</small>
+                        </h2>
+                        <ul>
+                            <li><span><b>#1 </b>25.000 AP</span></li>
+                            <li><span><b>#2 </b>20.000 AP</span></li>
+                            <li><span><b>#3 </b>15.000 AP</span></li>
+                            <li><span><b>#4 </b>10.000 AP</span></li>
+                            <li><span><b>#5 </b> 5.000 AP</span></li>
+                        </ul>
+                    </p>
+                    <p class="mt-4">
+                        <h2 class="font-bold">
+                            {{_("Class-based rank")}}
+                            <small class="text-sm text-white text-opacity-50">{{_("Given out to rank 1-3 for each base class (Noble, Mercenary, Explorer, Saint).")}}</small>
+                        </h2>
+                        <ul>
+                            <li><span><b>#1 </b>15x Slate Piece of Ancient</span></li>
+                            <li><span><b>#2 </b>10x Slate Piece of Ancient</span></li>
+                            <li><span><b>#3 </b>5x Slate Piece of Ancient</span></li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showTab(event, id) {
+        event.preventDefault();
+
+        // Hide all tabs
+        let tabContents = document.getElementsByClassName("tab-content");
+
+        for (let i = 0; i < tabContents.length; ++i) {
+            tabContents[i].style.display = "none";
+        }
+
+        // Disable all tab links
+        let tabLinks = document.getElementsByClassName("tab-link");
+        for (let i = 0; i < tabLinks.length; ++i) {
+            tabLinks[i].classList.remove("active");
+        }
+
+        // Show the new selected tab
+        let currentTabContent = document.getElementById(id);
+        currentTabContent.style.display = "block";
+
+        // Set the clicked button to active
+        event.currentTarget.classList.add("active");
+    }
+
+    // Show rules first
+    document.getElementById("first-tablink").click();
+</script>
+{% endblock %}
