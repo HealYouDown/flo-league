@@ -14,7 +14,7 @@
         <p class="mt-4 text-white text-opacity-50">
             {% set next_matchday = next_weekday(weekday=6) %}
             {% if next_matchday <= LAST_DATE and next_matchday >= FIRST_DATE %}
-            {{_("The next matchday will be on <b>%(date)s</b> at 18:00 CET/CEST.", date=format_date(next_matchday))}}
+            {{_("The next matchday will be on <b>%(date)s</b>.", date=format_date(next_matchday))}}
             {% endif %}
         </p>
     </div>
@@ -39,7 +39,7 @@
                         src="{{url_for('static', filename='assets/class_icons/male/' + player.character_class.value + '.png')}}"
                     />
                     <div class="flex flex-col items-start flex-grow">
-                        <a href="#" class="text-white">
+                        <a href="{{url_for('main.player_profile', server=server, id=player.id)}}" class="text-white">
                             {{player.username}}
                         </a>
                         <span class="text-sm text-white text-opacity-50">
@@ -67,7 +67,7 @@
             </li>
             {% endfor %}
         {% else %}
-        <p class="w-full text-lg text-center text-white text-opacity-25">
+        <p class="w-full text-lg text-center text-white text-opacity-75">
             {{_("No players were found. ¯\_(ツ)_/¯")}}
         </p>
         {% endif %}

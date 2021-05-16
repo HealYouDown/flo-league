@@ -1,0 +1,29 @@
+{% set active_page = "moderating" %}
+{% extends "base.html" %}
+
+{% from "macros/_render_field.html" import render_field, render_select %}
+
+{% block content %}
+<div class="flex justify-center">
+    <form method="POST" class="flex flex-col w-full max-w-md space-y-4">
+        {{ form.csrf_token }}
+        {{ render_field(form.username) }}
+        {{ render_field(form.guild) }}
+        {{ render_select(form.character_class) }}
+        {{ render_select(form.server) }}
+        {{ render_field(form.level_land) }}
+        {{ render_field(form.level_sea) }}
+
+        <button type="submit" class="w-full px-6 py-2 text-white bg-green-500 rounded-md hover:bg-green-600">Save</button>
+        {% if form.errors %}
+        <ul>
+            {% for field, errors in form.errors.items() %}
+            <li class="text-red-400">
+                {{ form[field].label }}: {{ ', '.join(errors) }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

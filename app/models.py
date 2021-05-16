@@ -7,6 +7,7 @@ from sqlalchemy.orm import relationship
 from app.enums import CharacterClass, Server, Winner
 from app.extensions import db
 from flask_login import UserMixin
+from app.constants import SEASON
 
 
 class Player(db.Model):
@@ -128,6 +129,8 @@ class FinishedMatch(db.Model):
     winner = Column(Enum(Winner), nullable=False)
     date = Column(DateTime, default=datetime.datetime.utcnow)
 
+    season = Column(Integer, default=SEASON)
+
     team_1 = relationship(
         "FinishedMatchParticipant", uselist=True,
         primaryjoin=(
@@ -166,16 +169,6 @@ class FinishedMatchParticipant(db.Model):
     character_class = Column(Enum(CharacterClass), nullable=False)
     level_land = Column(Integer, nullable=False)
     level_sea = Column(Integer, nullable=False)
-
-    @property
-    def player(self) -> dict:
-        return {
-            "id": self.player_id,
-            "username": self.username,
-            "character_class": self.character_class,
-            "level_land": self.level_land,
-            "level_sea": self.level_sea,
-        }
 
 
 class Moderator(db.Model, UserMixin):

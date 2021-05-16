@@ -1,0 +1,202 @@
+{% set active_page = "player_profile" %}
+{% set page_has_server_header = False %}
+{% extends "base.html" %}
+
+{% macro render_participant(participant) %}
+<div class="flex flex-row py-1.5 px-2 items-center">
+    <img
+        class="border-2 border-white border-opacity-75 rounded-full h-[32px] w-auto mr-1"
+        src="{{url_for('static', filename='assets/class_icons/male/' + participant.character_class.value + '.png')}}"
+    />
+    <div class="flex flex-col items-start flex-grow">
+        <a href="{{url_for('main.player_profile', server=player.server.value, id=participant.player_id)}}" class="text-sm leading-none text-white">
+            {{participant.username}}
+        </a>
+        <span class="text-xs text-white text-opacity-50">
+            {{_("level %(land)s/%(sea)s", land=participant.level_land, sea=participant.level_sea)}}
+        </span>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro render_points_gain(player_participant_) %}
+    {% set points_gain = player_participant_.points_after - player_participant_.points_before %}
+    <span class="text-white text-opacity-50">
+        {% if points_gain < 0 %}
+        ({{points_gain}})
+        {% else %}
+        (+{{points_gain}})
+        {% endif %}
+    </span>
+{% endmacro %}
+
+{% block content %}
+<div class="grid grid-cols-1 px-5 lg:px-0 gap-y-10 lg:gap-y-0 lg:grid-cols-3 lg:gap-x-10">
+    <div>
+        <div class="flex items-center mb-2">
+            <img
+                class="border-2 border-white border-opacity-75 rounded-full h-full w-auto mr-1.5"
+                src="{{url_for('static', filename='assets/class_icons/male/' + player.character_class.value + '.png')}}"
+            />
+            <div class="flex flex-col items-start flex-grow">
+                <span class="text-lg leading-none text-white text">
+                    {{player.username}}
+                </span>
+                <span class="text-white text-opacity-50">
+                    {{_("level %(land)s/%(sea)s", land=player.level_land, sea=player.level_sea)}}
+                </span>
+            </div>
+        </div>
+        <table class="table-fixed">
+            <thead>
+                <tr>
+                    <th class="w-20"></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="text-white">
+                <tr>
+                    <td class="font-semibold">{{_("Server")}}</td>
+                    <td>{{player.server.value|title}}</td>
+                </tr>
+                <tr>
+                    <td class="font-semibold">{{_("Level")}}</td>
+                    <td>{{player.level_land}} / {{player.level_sea}}</td>
+                </tr>
+                <tr>
+                    <td class="font-semibold">{{_("Guild")}}</td>
+                    <td>{{player.guild}}</td>
+                </tr>
+                <tr>
+                    <td class="font-semibold">{{_("Points")}}</td>
+                    <td>{{statistics.points}}</td>
+                </tr>
+                <tr>
+                    <td class="font-semibold">{{_("Wins")}}</td>
+                    <td>{{statistics.wins}}</td>
+                </tr>
+                <tr>
+                    <td class="font-semibold">{{_("Losses")}}</td>
+                    <td>{{statistics.losses}}</td>
+                </tr>
+                <tr>
+                    <td class="font-semibold">{{_("Draws")}}</td>
+                    <td>{{statistics.draws}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-span-2">
+        <h2 class="w-full text-2xl font-bold text-white border-b-2 border-white">
+            {{_("Matches")}}
+        </h2>
+        {% if matches %}
+        <table class="w-full space-y-5 border-separate" style="border-spacing: 0px 0.75em;">
+            <thead>
+                <tr class="font-semibold text-white lg:text-lg text-opacity-80">
+                    <th class="text-left">{{_("Opponents")}}</th>
+                    <th class="text-left">{{_("Allies")}}</th>
+                    <th class="text-left">{{_("Result")}}</th>
+                    <th class="text-left">{{_("Date")}}</th>
+                    {% if current_user.is_authenticated %}
+                        <th class="text-left">{{_("Change Winner")}}</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody class="text-white text-opacity-50">
+                {% for match in matches %}
+                    {% set ns = namespace(
+                        this_player_participant=none,
+                        ally_team=none,
+                        enemy_team=none,
+                    ) %}
+
+                    {# Find out which team the player belongs to #}
+                    {% for participant in match.team_1 %}
+                        {% if participant.player_id == player.id %}
+                            {% set ns.ally_team = match.team_1 %}
+                            {% set ns.enemy_team = match.team_2 %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if ns.ally_team is none %}
+                        {% set ns.ally_team = match.team_2 %}
+                        {% set ns.enemy_team = match.team_1 %}
+                    {% endif %}
+
+                    {% for participant in ns.ally_team if participant.player_id == player.id %}
+                        {% set ns.this_player_participant = participant %}
+                    {% endfor %}
+
+                    <tr class="bg-opacity-50 {{'bg-gray-900' if loop.index % 2 != 0}}" >
+                        {# Opponents #}
+                        <td class="px-2 py-3">
+                            <div>
+                                {% for participant in ns.enemy_team %}
+                                    {{ render_participant(participant) }}
+                                {% endfor %}
+                            </div>
+                        </td>
+
+                        {# Allies #}
+                        <td class="px-2 py-3">
+                            {% if ns.ally_team|length > 1 %}
+                                <div>
+                                    {% for participant in ns.ally_team if not participant.player_id == player.id %}
+                                        {{ render_participant(participant) }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <span>/</span>
+                            {% endif %}
+                        </td>
+
+                        {# Winner #}
+                        <td>
+                            {% if match.winner == Winner.draw %}
+                                <span class="text-yellow-600">{{_("Draw")}} {{render_points_gain(ns.this_player_participant)}}</span>
+                            {% elif match.winner == Winner['team_' ~ (ns.this_player_participant.team + 1)] %}
+                                <span class="text-green-400">{{_("Win")}} {{render_points_gain(ns.this_player_participant)}}</span>
+                            {% else %}
+                                <span class="text-red-400">{{_("Loss")}} {{render_points_gain(ns.this_player_participant)}}</span>
+                            {% endif %}
+                        </td>
+
+                        {# Date #}
+                        <td>
+                            <span>{{format_date(match.date)}}</span>
+                        </td>
+
+                        {% if current_user.is_authenticated %}
+                        <td>
+                            {% set options = [("Team 1", Winner.team_1.value), ("Team 2", Winner.team_2.value), ("Draw", Winner.draw.value)] %}
+                            <select
+                                name="match-winner"
+                                class="flex-grow text-sm text-white bg-transparent border-0 border-b-2 border-gray-400 outline-none focus:ring-0"
+                                hx-post="{{url_for('moderating.update_match_winner', match_id=match.id)}}"
+                                hx-swap="outerHTML"
+                            >
+                                {% for label, value in options %}
+                                    <option
+                                        class="text-white bg-gray-800"
+                                        value="{{value}}"
+                                        {{"selected" if value == match.winner.value}}
+                                    >
+                                        {{label}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="w-full mt-3 text-lg text-center text-white text-opacity-75">
+            {{_("No matches were found. (●'◡'●)")}}
+        </p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

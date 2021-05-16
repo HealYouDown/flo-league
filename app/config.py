@@ -12,6 +12,7 @@ class Config:
 
     # Languages
     LANGUAGES = ["en", "de", "fr", "it", "tr", "es", "pt"]
+    BABEL_TRANSLATION_DIRECTORIES = "translation/translations"
 
 
 class DevelopmentConfig(Config):

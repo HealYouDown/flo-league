@@ -7,7 +7,7 @@
       <img class="min-w-min" src="{{url_for('static', filename='assets/logo_small.png')}}" />
     </a>
   
-    <div class="flex flex-col space-x-10 space-y-4 md:space-y-0 md:flex-row">
+    <div class="flex flex-col items-center space-y-4 md:space-x-10 md:space-y-0 md:flex-row">
       <ul class="flex {{'flex-col' if current_user.is_authenticated}} lg:flex-row space-x-2">
         <li>
           <a

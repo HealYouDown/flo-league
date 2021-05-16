@@ -12,7 +12,7 @@
                         src="{{url_for('static', filename='assets/class_icons/male/' + participant.player.character_class.value + '.png')}}"
                     />
                     <div class="flex flex-col">
-                        <a href="#" class="text-xs text-white sm:text-base lg:text-lg">
+                        <a href="{{url_for('main.player_profile', server=server, id=participant.player.id)}}" class="text-xs text-white sm:text-base lg:text-lg">
                             {{participant.player.username}}
                         </a>
                         <span class="text-xs !leading-none text-white text-opacity-50 sm:text-sm lg:text-base tracking-tight">
@@ -55,7 +55,7 @@
                         <button
                             class="winner-button team-1"
                             type="button"
-                            hx-post="{{url_for('moderating.set_match_winner', match_id=match.id, winner='1')}}"
+                            hx-post="{{url_for('moderating.set_match_winner', match_id=match.id, winner=Winner.team_1.value)}}"
                             hx-target="#match-{{match.id}}"
                             hx-swap="outerHTML"
                         >
@@ -64,7 +64,7 @@
                         <button
                             class="winner-button draw"
                             type="button"
-                            hx-post="{{url_for('moderating.set_match_winner', match_id=match.id, winner='0')}}"
+                            hx-post="{{url_for('moderating.set_match_winner', match_id=match.id, winner=Winner.draw.value)}}"
                             hx-target="#match-{{match.id}}"
                             hx-swap="outerHTML"
                         >
@@ -73,7 +73,7 @@
                         <button
                             class="winner-button team-2"
                             type="button"
-                            hx-post="{{url_for('moderating.set_match_winner', match_id=match.id, winner='2')}}"
+                            hx-post="{{url_for('moderating.set_match_winner', match_id=match.id, winner=Winner.team_2.value)}}"
                             hx-target="#match-{{match.id}}"
                             hx-swap="outerHTML"
                         >

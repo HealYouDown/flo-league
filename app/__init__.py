@@ -1,3 +1,4 @@
+from app.enums import Winner
 from app.utils import next_weekday
 from flask import Flask
 
@@ -42,6 +43,7 @@ def create_app(development: bool = False) -> Flask:
         "get_locale": get_locale,
         "format_date": format_date,
         "next_weekday": next_weekday,
+        "Winner": Winner,
         "SEASON": SEASON,
         "FIRST_DATE": FIRST_DATE,
         "LAST_DATE": LAST_DATE,

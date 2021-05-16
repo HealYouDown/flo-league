@@ -39,75 +39,118 @@
             <li><a class="tab-link" href="#" onclick="showTab(event, 'prizes')">{{_("Prizes")}}</a></li>
         </ul>
         
+        {% set default_points = 1000 %}
+        {% set min_level = 100 %}
+        {% set draw_time_m = 3 %}
+        {% set rounds = 4 %}
+        {% set matchdays = 8 %}
+        {% set min_participate = 0.5 %}
+        {% set match_type = "2v2" %}
+        {% set island = "Ron" %}
+        {% set time = "18:00 CET/CEST" %}
+
         <!--Tab Content-->
         <div class="px-6 pb-5 mt-4 text-sm text-gray-200 md:mt-8 lg:mt-16 md:text-base lg:text-lg">
             <div class="hidden tab-content" id="rules">
                 <ol class="list-decimal gap-x-8 md:gap-x-14 lg:gap-x-20 md:two-columns">
                     <li>
-                    Pretium ridiculus aenean eros viverra imperdiet at id aptent libero volutpat consectetur interdum consectetur aptent aliquet mi natoque hendrerit id.
+                        {{_("A name change will lead to you starting from the beginning with 1000 points.")}}
                     </li>
                     <li>
-                    Adipiscing mauris metus sodales luctus amet posuere condimentum at mi taciti blandit vestibulum ante odio litora vivamus vitae bibendum egestas.
+                        {{_("Pets and tamed monsters are not allowed.")}}
                     </li>
                     <li>
-                    Cras eget nisl lobortis augue dictumst himenaeos facilisi himenaeos amet quis mus bibendum habitasse montes lectus suscipit gravida lobortis pretium?
+                        {{_("You are only allowed to have your own buffs or those from allies in your group. That means, buffs by pets, other players outside of your team or attendance from the lord are not allowed.")}}
                     </li>
                     <li>
-                    Molestie, leo ridiculus proin sociis nibh eros cursus ridiculus maecenas pharetra feugiat fusce euismod neque a tempor hendrerit convallis vivamus.
+                        {{_("All consumable items (e.g. HP/MP potions, Antidote, ...) are not allowed.")}}
                     </li>
                     <li>
-                    Nisi fermentum diam magna ut aenean hendrerit ut a sem egestas eleifend potenti fringilla pharetra ullamcorper arcu facilisis dis varius!
+                        {{_("Disconnecting while fighting counts as a loss for you. If your ally is able to win alone, you will also receive the win. If you reconnect while a fight is still going on, you are not allowed to continue fighting.")}}
                     </li>
                     <li>
-                    Nostra etiam magna sociosqu eu lorem lorem molestie commodo venenatis laoreet, ipsum fames donec velit pharetra nec platea ad diam.
+                        {{_("PvPs that last longer than %(time)s minutes count as a draw.", time=draw_time_m)}}
                     </li>
                     <li>
-                    Enim eget phasellus massa metus quisque donec curae; placerat, congue nisi netus magna at lorem pretium eu placerat dictumst dui.
+                        {{_("Running into spectator crowds with the aim to get your enemies to lose target is not allowed.")}}
                     </li>
                     <li>
-                    Ut feugiat mi urna purus praesent litora odio tempus primis felis amet ullamcorper fames vitae posuere id leo lobortis pretium?
+                        {{_("Trolling or not wanting to fight with anyone in your team will lead to immediate disqualification for the whole season.")}}
                     </li>
                     <li>
-                    Ultricies suscipit dignissim primis mollis sociosqu condimentum ultricies molestie porttitor primis habitant at commodo nostra erat molestie augue vulputate faucibus.
+                        {{_("Abusing bugs (for example walking backwards or with shift while having thorn trunk on you) is obviously not allowed and will yield to you losing the match.")}}
                     </li>
                     <li>
-                    Libero interdum laoreet nulla et consectetur porta duis platea hac volutpat id tempor mus rutrum metus a porttitor facilisi commodo.
-                    </li>
-                    <li>
-                    Eu nisi convallis massa taciti curabitur erat posuere urna luctus a mauris himenaeos molestie tempor suspendisse placerat aptent dui dignissim.
+                        {{_("While equipment trading is technically allowed, we would prefer it, if anyone plays with their own equipment.")}}
                     </li>
                 </ol>
                 <p class="mt-10">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    {{_("Not following any rules will lead to disqualification for the day, the whole season or for the whole event for all seasons to come. Trolling the event may also affect your personal accounts.")}}
+                    <br />
+                    {{_("It is up to the moderators to evaluate each case individually and decide when a punishment should be given.")}}
                 </p>
             </div>
             <div class="hidden tab-content" id="explanation">
                 <div>
                     <p>
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                        {{_("To take part in the league, you will need to have a character on land level %(min_level)s or higher. To then participate, just be present on %(island)s at %(time)s.", min_level=min_level, island=island, time=time)}}
                     </p>
                     
                     <br/>
 
                     <p>
-                        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+                        {{_("The moderators of the league will collect all names (you will most likely have to wishper a certain word to them) and enter them into the system, which will then generate random matches.")}}
+                        <br />
+                        {{_("You can read more about the matchmaking algorithm on <a class='text-blue-500' target='_blank' href='https://www.github.com/HealYouDown/flo-league'>Github</a>.")}}
                     </p>
 
                     <br/>
-                    
+
                     <p>
-                        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                        {{_("When it is your turn to fight, the moderators will announce your name and you will have to step foward.")}}
+                        <br/>
+                        {{_("Depending on the type of match, you will have to form a party to start.")}}
+                    </p>
+
+                    <br/>
+
+                    <p>
+                        {{_("Each sunday, we will have %(amount_matches)s rounds of %(match_type)s matches. You do not need to take part in all rounds.", amount_matches=rounds, match_type=match_type)}}
                     </p>
                 </div>
             </div>
             <div class="hidden tab-content" id="prizes">
                 <div>
-                    <p>
-                        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+                    <p class="text-red-400">
+                        {{_("In order to earn prizes, you will have to participate in at least %(num1)s out of %(num2)s possible matches.", num1=(min_participate * (rounds * matchdays))|int, num2=(rounds * matchdays))}}
                     </p>
                     <br>
                     <p>
-                        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
+                        {{_("Prizes are given out for both LuxPlena and Bergruen. There are two types of prizes to win: One for the overall rank and one for a class-based rank.")}}
+                    </p>
+                    <p>
+                        <h2 class="font-bold">
+                            {{_("Overall rank")}}
+                            <small class="text-sm text-white text-opacity-50">{{_("Given out to rank 1-5 on each server ranking.")}}</small>
+                        </h2>
+                        <ul>
+                            <li><span><b>#1 </b>30.000 AP</span></li>
+                            <li><span><b>#2 </b>20.000 AP</span></li>
+                            <li><span><b>#3 </b>15.000 AP</span></li>
+                            <li><span><b>#4 </b>10.000 AP</span></li>
+                            <li><span><b>#5 </b> 5.000 AP</span></li>
+                        </ul>
+                    </p>
+                    <p class="mt-4">
+                        <h2 class="font-bold">
+                            {{_("Class-based rank")}}
+                            <small class="text-sm text-white text-opacity-50">{{_("Given out to rank 1-3 for each base class (Noble, Mercenary, Explorer, Saint).")}}</small>
+                        </h2>
+                        <ul>
+                            <li><span><b>#1 </b>15x Slate Piece of Ancient</span></li>
+                            <li><span><b>#2 </b>10x Slate Piece of Ancient</span></li>
+                            <li><span><b>#3 </b>5x Slate Piece of Ancient</span></li>
+                        </ul>
                     </p>
                 </div>
             </div>

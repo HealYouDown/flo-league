@@ -4,15 +4,45 @@
 {% block content %}
 <div class="flex">
     <ul class="flex flex-col space-y-5 text-lg text-white">
-        <a href="{{url_for('moderating.create_matches', server='bergruen')}}">
-            [BER] CREATE MATCHES
-        </a>
-        <a href="{{url_for('moderating.create_matches', server='luxplena')}}">
-            [LUX] CREATE MATCHES
-        </a>
-        <a href="{{url_for('auth.logout')}}">
-            LOGOUT
-        </a>
+        <li>
+            <a href="{{url_for('moderating.create_matches', server='bergruen')}}">
+                [BER] CREATE MATCHES
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('moderating.create_matches', server='luxplena')}}">
+                [LUX] CREATE MATCHES
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('moderating.edit_or_add_player')}}">
+                ADD PLAYER
+            </a>
+        </li>
+        <li>
+            <div>
+                SEARCH PLAYER
+                <input class="w-full px-4 py-2 text-white bg-gray-900 border border-black rounded-md" type="text" autocomplete="off" list="names" />
+                <datalist id="names">
+                    {% for player in players %}
+                    <option value="[{{player.server.value}}] {{player.username}} ({{player.id}})"></option>
+                    {% endfor %}
+                </datalist>
+            </div>
+            <div>
+                VIEW PROFILE
+                <div class="flex space-x-2">
+                    <input class="flex-grow px-4 py-2 text-white bg-gray-900 border border-black rounded-md" type="text" autocomplete="off" name="id" placeholder="ENTER ID" />
+                    <button hx-post="{{url_for('moderating.go_to_profile')}}" hx-include="[name='id']" class="px-2 py-1 text-white bg-gray-900 rounded-lg">GOTO</button>
+                </div>
+            </div>
+        </li>
+        <hr>
+        <li>
+            <a href="{{url_for('auth.logout')}}">
+                LOGOUT
+            </a>
+        </li>
     </ul>
 </div>
 {% endblock %}

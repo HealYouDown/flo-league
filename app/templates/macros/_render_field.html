@@ -3,13 +3,22 @@
         <label class="text-white mb-1.5">
             {{field.label.text}}
         </label>
-        <input
-            name="{{field.name}}"
-            type="{{'password' if field.type == 'PasswordField' else 'text'}}"
-            class="w-full px-4 py-2 text-white bg-gray-900 border border-black rounded-md"
-        />
+        {{ field(class="w-full px-4 py-2 text-white bg-gray-900 border border-black rounded-md") }}
     </div>
 {% endmacro %}
 
-{% macro render_select(field) %}
+{% macro render_select(field, no_container=false) %}
+    {% if no_container %}
+        <label class="text-white mb-1.5">
+            {{field.label.text}}
+        </label>
+        {{ field(class="w-full px-4 py-2 text-white bg-gray-900 border border-black rounded-md") }}
+    {% else %}
+    <div class="flex flex-col">
+        <label class="text-white mb-1.5">
+            {{field.label.text}}
+        </label>
+        {{ field(class="w-full px-4 py-2 text-white bg-gray-900 border border-black rounded-md") }}
+    </div>
+    {% endif %}
 {% endmacro %}

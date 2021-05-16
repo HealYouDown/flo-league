@@ -1,6 +1,8 @@
 {% set active_page = "moderating" %}
 {% extends "base.html" %}
 
+{% from "macros/_render_field.html" import render_select %}
+
 {% block content %}
 <div class="flex justify-center w-full">
     <div class="grid grid-cols-2 gap-x-20 gap-y-10">
@@ -22,16 +24,25 @@
 
                 <div class="flex items-center justify-center w-full pt-5 mt-5 space-x-5">
                     <div>
-                        {{ form.mode_select.label(class="text-white") }}
-                        {{ form.mode_select }}
+                        {{ render_select(form.team_size, no_container=true) }}
                     </div>
-                    <div>
-                        {{ form.is_ranked.label(class="text-white") }}
-                        {{ form.is_ranked }}
+                    <div class="flex flex-col">
+                        <div>
+                            {{ form.is_ranked.label(class="text-white") }}
+                            {{ form.is_ranked }}
+                        </div>
+                        <small class="text-xs text-white text-opacity-50">
+                            Whether to change points when setting a winner. If disabled, matches are just deleted once a winner is clicked.
+                        </small>
                     </div>
-                    <div>
-                        {{ form.make_teams_fair.label(class="text-white") }}
-                        {{ form.make_teams_fair }}
+                    <div class="flex flex-col">
+                        <div>
+                            {{ form.make_teams_fair.label(class="text-white") }}
+                            {{ form.make_teams_fair }}
+                        </div>
+                        <small class="text-xs text-white text-opacity-50">
+                            Whether to make teams fair - that means the algorithm tries to not match noble noble vs saint saint, if it can. Sometimes its unavoidable.
+                        </small>
                     </div>
                 </div>
             </form>
