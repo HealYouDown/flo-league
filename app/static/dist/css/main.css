@@ -1315,6 +1315,10 @@ select {
 .bg-transparent {
 	background-color: transparent;
 }
+.bg-red-700 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+}
 .bg-green-500 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
@@ -1429,11 +1433,11 @@ select {
 	font-size: 1.125rem;
 	line-height: 1.75rem;
 }
-.font-semibold {
-	font-weight: 600;
-}
 .font-bold {
 	font-weight: 700;
+}
+.font-semibold {
+	font-weight: 600;
 }
 .uppercase {
 	text-transform: uppercase;
