@@ -1,4 +1,3 @@
-import os
 import typing
 
 import requests
@@ -43,8 +42,7 @@ if __name__ == "__main__":
     print(f"Got {len(players_data)} players from flandria")
 
     # Create app to insert into database
-    app = create_app(
-        development=os.environ["FLASK_ENV"] == "development")
+    app = create_app(development=True)
 
     deleted_count = 0
 

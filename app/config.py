@@ -4,8 +4,9 @@ DB_NAME = "database.db"
 
 
 class Config:
-    # Disable SQL stuff
+    # SQLALCHEMY
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = f"sqlite:///../{DB_NAME}"
 
     # Secret Key
     SECRET_KEY = os.environ.get("SECRET_KEY", default="secret_key")
@@ -19,13 +20,9 @@ class DevelopmentConfig(Config):
     ENV = "development"
     DEBUG = True
 
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///../{DB_NAME}"
-
     # Disables caching
     SEND_FILE_MAX_AGE_DEFAULT = 0
 
 
 class ProductionConfig(Config):
     ENV = "production"
-
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///../{DB_NAME}"
