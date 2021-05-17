@@ -89,6 +89,7 @@
                 <span id="player-count">0</span>
                 <button onclick="addedPlayerIds = []; update();">Clear</button>
             </div>
+            <p class="mb-2 text-white text-opacity-75" id="player-list-string"></p>
             <ol id="player-list"></ol>
         </div>
     </div>
@@ -169,7 +170,9 @@
 
     function updatePlayerList() {
         const playerList = document.getElementById("player-list");
+        const playerListString = document.getElementById("player-list-string");
         playerList.innerHTML = "";
+        playerListString.innerHTML = "";
 
         players.forEach((player) => {
             if (addedPlayerIds.includes(player.id)) {
@@ -192,6 +195,8 @@
                 `;
 
                 playerList.appendChild(element);
+
+                playerListString.innerHTML += `${player.username}, `;
             }
         });
     }
