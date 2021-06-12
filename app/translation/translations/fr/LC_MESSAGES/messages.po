@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-05-16 15:49+0200\n"
-"PO-Revision-Date: 2021-05-16 14:52+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2021-05-23 09:16+0200\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 2.4.3\n"
 
 #: app/blueprints/auth/views.py:30
 msgid "Login"
@@ -24,83 +25,82 @@ msgstr ""
 
 #: app/blueprints/main/views.py:20
 msgid "Home"
-msgstr ""
+msgstr "Accueil"
 
 #: app/blueprints/main/views.py:36 app/templates/abstract_base.html:40
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Politique de confidentialité"
 
 #: app/blueprints/main/views.py:42 app/templates/abstract_base.html:37
 msgid "Legal Notice"
-msgstr ""
+msgstr "Mention légale"
 
 #: app/blueprints/main/views.py:53
 msgid "Ranking Bergruen"
-msgstr ""
+msgstr "Classement Bergruen"
 
 #: app/blueprints/main/views.py:55
 msgid "Ranking LuxPlena"
-msgstr ""
+msgstr "Classement Luxplena"
 
 #: app/blueprints/main/views.py:94
 msgid "Matches Bergruen"
-msgstr ""
+msgstr "Matchs Bergruen"
 
 #: app/blueprints/main/views.py:96
 msgid "Matches LuxPlena"
-msgstr ""
+msgstr "Matchs LuxPlena"
 
 #: app/blueprints/main/views.py:154
 #, python-format
 msgid "Player %(name)s"
-msgstr ""
+msgstr "Joueur %(name)s"
 
 #: app/blueprints/moderating/views.py:31 app/templates/base.html:34
 msgid "Moderating"
-msgstr ""
+msgstr "Modération"
 
 #: app/blueprints/moderating/views.py:88
 msgid "Create Matches Bergruen"
-msgstr ""
+msgstr "Créer des matchs Bergruen"
 
 #: app/blueprints/moderating/views.py:90
 msgid "Create Matches LuxPlena"
-msgstr ""
+msgstr "Créer des matchs Luxplena"
 
 #: app/blueprints/moderating/views.py:203
 msgid "Not possible!"
-msgstr ""
+msgstr "Impossible !"
 
 #: app/templates/base.html:17 app/templates/main/index.html:15
 msgid "Ranking"
-msgstr ""
+msgstr "Classement"
 
 #: app/templates/base.html:25 app/templates/main/index.html:22
 #: app/templates/main/player_profile.html:91
 msgid "Matches"
-msgstr ""
+msgstr "Matchs"
 
 #: app/templates/main/index.html:37
 msgid "Rules"
-msgstr ""
+msgstr "Règles"
 
 #: app/templates/main/index.html:38
 msgid "How it works"
-msgstr ""
+msgstr "Comment ça fonctionne"
 
 #: app/templates/main/index.html:39
 msgid "Prizes"
-msgstr ""
+msgstr "Prix"
 
 #: app/templates/main/index.html:57
 msgid ""
-"A name change will lead to you starting from the beginning with 1000 "
-"points."
-msgstr ""
+"A name change will lead to you starting from the beginning with 1000 points."
+msgstr "Un changement de nom vous fera recommencer avec 1000 points."
 
 #: app/templates/main/index.html:60
 msgid "Pets and tamed monsters are not allowed."
-msgstr ""
+msgstr "Les pets et les monstres apprivoisés ne sont pas autorisés."
 
 #: app/templates/main/index.html:63
 msgid ""
@@ -108,287 +108,314 @@ msgid ""
 "group. That means, buffs by pets, other players outside of your team or "
 "attendance from the lord are not allowed."
 msgstr ""
+"Vous n’êtes autorisé à avoir que vos propres buffs ou ceux de vos alliés dans "
+"votre groupe. Cela signifie que les pets, les autres joueurs en dehors de "
+"votre équipe ou la présence du  bonus donné par un lord ne sont pas autorisés."
 
 #: app/templates/main/index.html:66
 msgid "All consumable items (e.g. HP/MP potions, Antidote, ...) are not allowed."
 msgstr ""
+"Tous les articles consommables (par ex. potions HP/MP, Antidote, ...) ne sont "
+"pas autorisés."
 
 #: app/templates/main/index.html:69
 msgid ""
-"Disconnecting while fighting counts as a loss for you. If your ally is "
-"able to win alone, you will also receive the win. If you reconnect while "
-"a fight is still going on, you are not allowed to continue fighting."
+"Disconnecting while fighting counts as a loss for you. If your ally is able to "
+"win alone, you will also receive the win. If you reconnect while a fight is "
+"still going on, you are not allowed to continue fighting."
 msgstr ""
+"Se déconnecter pendant le combat compte comme une défaite pour vous. Si votre "
+"allié est capable de gagner seul, vous recevrez également la victoire. Si vous "
+"vous reconnectez pendant un combat en cours, vous n’avez pas le droit de "
+"continuer à vous battre."
 
 #: app/templates/main/index.html:72
 #, python-format
 msgid "PvPs that last longer than %(time)s minutes count as a draw."
-msgstr ""
+msgstr "Les PvP qui durent plus de %(time)s minutes comptent comme un match nul."
 
 #: app/templates/main/index.html:75
 msgid ""
-"Running into spectator crowds with the aim to get your enemies to lose "
-"target is not allowed."
+"Running into spectator crowds with the aim to get your enemies to lose target "
+"is not allowed."
 msgstr ""
+"Aller dans la foule de spectateurs dans le but d'être perdu de vue par vos "
+"ennemis n’est pas autorisé."
 
 #: app/templates/main/index.html:78
 msgid ""
 "Trolling or not wanting to fight with anyone in your team will lead to "
 "immediate disqualification for the whole season."
 msgstr ""
+"Troller ou de ne pas vouloir se battre avec n’importe qui dans votre équipe "
+"mènera à la disqualification immédiate pour toute la saison."
 
 #: app/templates/main/index.html:81
 msgid ""
-"Abusing bugs (for example walking backwards or with shift while having "
-"thorn trunk on you) is obviously not allowed and will yield to you losing"
-" the match."
+"Abusing bugs (for example walking backwards or with shift while having thorn "
+"trunk on you) is obviously not allowed and will yield to you losing the match."
 msgstr ""
+"Abuser des bugs (par exemple marcher à reculons ou avec la touche shift "
+"enfoncé tout en ayant thorn trunk sur vous) n’est évidemment pas autorisé et "
+"vous fera perdre le match."
 
 #: app/templates/main/index.html:84
 msgid ""
-"While equipment trading is technically allowed, we would prefer it, if "
-"anyone plays with their own equipment."
+"While equipment trading is technically allowed, we would prefer it, if anyone "
+"plays with their own equipment."
 msgstr ""
+"Bien que les échanges d’équipement soit techniquement autorisé, nous "
+"préférerions que quelqu’un joue avec son propre équipement."
 
 #: app/templates/main/index.html:88
 msgid ""
-"Not following any rules will lead to disqualification for the day, the "
-"whole season or for the whole event for all seasons to come. Trolling the"
-" event may also affect your personal accounts."
+"Not following any rules will lead to disqualification for the day, the whole "
+"season or for the whole event for all seasons to come. Trolling the event may "
+"also affect your personal accounts."
 msgstr ""
+"Ne pas suivre les règles conduira à la disqualification pour la journée, la "
+"saison entière ou pour l’événement entier pour toutes les saisons à venir. "
+"Troller à l’événement peut également affecter vos comptes personnels."
 
 #: app/templates/main/index.html:90
 msgid ""
-"It is up to the moderators to evaluate each case individually and decide "
-"when a punishment should be given."
+"It is up to the moderators to evaluate each case individually and decide when "
+"a punishment should be given."
 msgstr ""
+"Il appartient aux modérateurs d’évaluer chaque cas individuellement et de "
+"décider quand une punition doit être infligée."
 
 #: app/templates/main/index.html:96
 #, python-format
 msgid ""
-"To take part in the league, you will need to have a character on land "
-"level %(min_level)s or higher. To then participate, just be present on "
-"%(island)s at %(time)s."
+"To take part in the league, you will need to have a character on land level "
+"%(min_level)s or higher. To then participate, just be present on %(island)s at "
+"%(time)s."
 msgstr ""
+"Pour participer à la ligue, vous aurez besoin d’avoir un personnage niveau "
+"terre %(min_level)s ou supérieur. Pour participer, il suffit d’être présent à "
+"%(island)s à %(time)s."
 
 #: app/templates/main/index.html:102
 msgid ""
-"The moderators of the league will collect all names (you will most likely"
-" have to wishper a certain word to them) and enter them into the system, "
-"which will then generate random matches."
+"The moderators of the league will collect all names (you will most likely have "
+"to wishper a certain word to them) and enter them into the system, which will "
+"then generate random matches."
 msgstr ""
+"Les modérateurs de la ligue recueilleront tous les noms (vous devrez "
+"probablement leur chuchoter un certain mot) et les entreront dans le système, "
+"qui générera ensuite des matchs aléatoires."
 
 #: app/templates/main/index.html:104
 msgid ""
-"You can read more about the matchmaking algorithm on <a class='text-"
+"You can read more about the matchmaking algorithm on <a class='text-blue-500' "
+"target='_blank' href='https://www.github.com/HealYouDown/flo-league'>Github</"
+"a>."
+msgstr ""
+"Vous pouvez en savoir plus sur l’algorithme de matchmaking sur <a class='text-"
 "blue-500' target='_blank' href='https://www.github.com/HealYouDown/flo-"
 "league'>Github</a>."
-msgstr ""
 
 #: app/templates/main/index.html:110
 msgid ""
-"When it is your turn to fight, the moderators will announce your name and"
-" you will have to step foward."
+"When it is your turn to fight, the moderators will announce your name and you "
+"will have to step foward."
 msgstr ""
+"Quand ce sera ton tour de te battre, les modérateurs annonceront ton nom et tu "
+"devras t'avancer devant les autres."
 
 #: app/templates/main/index.html:112
 msgid "Depending on the type of match, you will have to form a party to start."
-msgstr ""
+msgstr "Selon le type de match, vous aurez à former un groupe pour y participer."
 
 #: app/templates/main/index.html:118
 #, python-format
 msgid ""
-"Each sunday, we will have %(amount_matches)s rounds of %(match_type)s "
-"matches. You do not need to take part in all rounds."
+"Each sunday, we will have %(amount_matches)s rounds of %(match_type)s matches. "
+"You do not need to take part in all rounds."
 msgstr ""
+"Chaque dimanche, nous aurons %(amount_matches)s manches de %(match_type)s. "
+"Vous n’avez pas besoin de participer à toutes les manches."
 
 #: app/templates/main/index.html:125
 #, python-format
 msgid ""
-"In order to earn prizes, you will have to participate in at least "
-"%(num1)s out of %(num2)s possible matches."
+"In order to earn prizes, you will have to participate in at least %(num1)s out "
+"of %(num2)s possible matches."
 msgstr ""
+"Pour gagner des prix, vous devrez participer à au moins %(num1)s sur %(num2)s "
+"matchs possibles."
 
 #: app/templates/main/index.html:129
 msgid ""
-"Prizes are given out for both LuxPlena and Bergruen. There are two types "
-"of prizes to win: One for the overall rank and one for a class-based "
-"rank."
+"Prizes are given out for both LuxPlena and Bergruen. There are two types of "
+"prizes to win: One for the overall rank and one for a class-based rank."
 msgstr ""
+"Des prix sont décernés pour LuxPlena et Bergruen. Il existe deux types de prix "
+"à gagner: un pour le classement général et un pour le classement basé sur la "
+"classe."
 
 #: app/templates/main/index.html:133
 msgid "Overall rank"
-msgstr ""
+msgstr "Classement général"
 
 #: app/templates/main/index.html:134
 msgid "Given out to rank 1-5 on each server ranking."
-msgstr ""
+msgstr "Distribué aux rang 1 à 5 pour chaque classement de serveur."
 
 #: app/templates/main/index.html:146
 msgid "Class-based rank"
-msgstr ""
+msgstr "Classement basé sur la classe"
 
 #: app/templates/main/index.html:147
 msgid ""
-"Given out to rank 1-3 for each base class (Noble, Mercenary, Explorer, "
-"Saint)."
+"Given out to rank 1-3 for each base class (Noble, Mercenary, Explorer, Saint)."
 msgstr ""
+"Distribué aux rang 1 à 3 pour chaque classe de base (Noble, Mercenaire, "
+"Explorateur, Saint)."
 
 #: app/templates/main/matches.html:19 app/templates/main/player_profile.html:16
 #: app/templates/main/player_profile.html:46 app/templates/main/ranking.html:46
 #, python-format
 msgid "level %(land)s/%(sea)s"
-msgstr ""
+msgstr "niveau %(land)s/%(sea)s"
 
 #: app/templates/main/matches.html:40
 msgid "Delete all matches"
-msgstr ""
+msgstr "Supprimer tous les matchs"
 
 #: app/templates/main/matches.html:62
 msgid "Team 1"
-msgstr ""
+msgstr "Équipe 1"
 
-#: app/templates/main/matches.html:71
-#: app/templates/main/player_profile.html:156
+#: app/templates/main/matches.html:71 app/templates/main/player_profile.html:156
 msgid "Draw"
-msgstr ""
+msgstr "Égalité"
 
 #: app/templates/main/matches.html:80
 msgid "Team 2"
-msgstr ""
+msgstr "Équipe 2"
 
 #: app/templates/main/matches.html:89
 msgid "No matches were found. (╯°□°）╯︵ ┻━┻"
-msgstr ""
+msgstr "Aucun match n’a été trouvé. (╯°□°）╯︵ ┻━┻"
 
 #: app/templates/main/player_profile.html:59
 msgid "Server"
-msgstr ""
+msgstr "Serveur"
 
 #: app/templates/main/player_profile.html:63
 msgid "Level"
-msgstr ""
+msgstr "Niveau"
 
 #: app/templates/main/player_profile.html:67
 msgid "Guild"
-msgstr ""
+msgstr "Guilde"
 
 #: app/templates/main/player_profile.html:71
 msgid "Points"
-msgstr ""
+msgstr "Points"
 
 #: app/templates/main/player_profile.html:75
 msgid "Wins"
-msgstr ""
+msgstr "Victoires"
 
 #: app/templates/main/player_profile.html:79
 msgid "Losses"
-msgstr ""
+msgstr "Défaites"
 
 #: app/templates/main/player_profile.html:83
 msgid "Draws"
-msgstr ""
+msgstr "Egalités"
 
 #: app/templates/main/player_profile.html:97
 msgid "Opponents"
-msgstr ""
+msgstr "Adversaires"
 
 #: app/templates/main/player_profile.html:98
 msgid "Allies"
-msgstr ""
+msgstr "Alliés"
 
 #: app/templates/main/player_profile.html:99
 msgid "Result"
-msgstr ""
+msgstr "Résultat"
 
 #: app/templates/main/player_profile.html:100
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: app/templates/main/player_profile.html:102
 msgid "Change Winner"
-msgstr ""
+msgstr "Changement de vainqueur"
 
 #: app/templates/main/player_profile.html:158
 msgid "Win"
-msgstr ""
+msgstr "Victoire"
 
 #: app/templates/main/player_profile.html:160
 msgid "Loss"
-msgstr ""
+msgstr "Défaite"
 
 #: app/templates/main/player_profile.html:196
 msgid "No matches were found. (●'◡'●)"
-msgstr ""
+msgstr "Aucun match n’a été trouvé. (●'◡'●)"
 
 #: app/templates/main/ranking.html:9
 #, python-format
 msgid "%(server)s: Season %(season)s"
-msgstr ""
+msgstr "%(server)s: Saison %(season)s"
 
 #: app/templates/main/ranking.html:12
 #, python-format
 msgid "The season runs from %(start_date)s until %(end_date)s."
-msgstr ""
+msgstr "La saison va du %(start_date)s au %(end_date)s."
 
 #: app/templates/main/ranking.html:17
 #, python-format
 msgid "The next matchday will be on <b>%(date)s</b>."
-msgstr ""
+msgstr "La prochaine journée de match sera le <b>%(date)s</b>."
 
 #: app/templates/main/ranking.html:57
 msgid "pts"
-msgstr ""
+msgstr "pts"
 
 #: app/templates/main/ranking.html:63
 msgid "W : L : D"
-msgstr ""
+msgstr "V : D : E"
 
 #: app/templates/main/ranking.html:71
 msgid "No players were found. ¯\\_(ツ)_/¯"
-msgstr ""
+msgstr "Aucun joueur n’a été trouvé. ¯\\_(ツ)_/¯"
 
 #: app/templates/moderating/create_matches.html:22
 #, python-format
 msgid "Create Matches %(server)s"
-msgstr ""
+msgstr "Créer des correspondances %(server)s"
 
 #: app/templates/moderating/create_matches.html:54
 msgid "Add Player"
-msgstr ""
+msgstr "Ajouter un joueur"
 
 #: app/templates/moderating/create_matches.html:60
 msgid "Search Player"
-msgstr ""
+msgstr "Rechercher un joueur"
 
 #: app/templates/moderating/create_matches.html:67
 msgid "Chatlog Parser"
-msgstr ""
+msgstr "Journal d'analyse"
 
 #: app/templates/moderating/create_matches.html:69
 msgid "Enter keyword"
-msgstr ""
+msgstr "Entrer un mot-clef"
 
 #: app/templates/moderating/create_matches.html:73
 msgid "Enter chatlog here"
-msgstr ""
+msgstr "Journal de discussion"
 
 #: app/templates/moderating/create_matches.html:80
 msgid "Parse"
-msgstr ""
+msgstr "Analyse"
 
 #: app/templates/moderating/create_matches.html:87
 msgid "Player List"
-msgstr ""
-
-#~ msgid "Given out to each base class (Noble, Mercenary, Explorer, Saint)."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "To take part in the league, you"
-#~ " will need to have a character "
-#~ "on land level %(min_level)s or higher."
-#~ " To then participate, just be present"
-#~ " on %(island)s at %(time)s"
-#~ msgstr ""
-
+msgstr "Liste des joueurs"
