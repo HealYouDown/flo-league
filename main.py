@@ -9,4 +9,4 @@ if __name__ == "__main__":
     app = create_app(
         development=os.environ["FLASK_ENV"] == "development"
     )
-    app.run()
+    app.run(host="0.0.0.0")
