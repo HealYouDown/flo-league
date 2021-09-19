@@ -1,6 +1,6 @@
 
 from app.constants import SEASON
-from app.enums import Server
+from app.enums import CharacterClass, Server
 from app.extensions import db
 from app.models import (FinishedMatch, FinishedMatchParticipant, Player,
                         PlayerStatistics, RunningMatch)
@@ -9,7 +9,7 @@ from flask.globals import current_app
 from flask.helpers import send_from_directory
 from flask.templating import render_template
 from flask_babel import gettext
-from sqlalchemy import or_
+from sqlalchemy import or_, text
 
 bp = Blueprint("main", __name__)
 
@@ -168,3 +168,83 @@ def player_profile(server: str, id: int):
         matches=matches,
         title=gettext("Player %(name)s", name=player.username),
     )
+
+
+@bp.route("/<server>/winners")
+def server_winners(server: str):
+    server: Server = Server(server)
+    season = request.args.get("season", SEASON)
+    matches_required = 16
+
+    classes = {
+        "noble": [CharacterClass.noble, CharacterClass.court_magician, CharacterClass.magic_knight],
+        "saint": [CharacterClass.saint, CharacterClass.shaman, CharacterClass.priest],
+        "explorer": [CharacterClass.explorer, CharacterClass.sniper, CharacterClass.excavator],
+        "mercenary": [CharacterClass.mercenary, CharacterClass.gladiator, CharacterClass.guardian_swordsman],
+    }
+
+    class_based_data = {
+        "noble": [],
+        "saint": [],
+        "explorer": [],
+        "mercenary": [],
+    }
+
+    for key, key_classes in classes.items():
+        query = (
+            db.session.query(
+                Player, PlayerStatistics,
+                (PlayerStatistics.wins + PlayerStatistics.losses + PlayerStatistics.draws).label("matches_played"),
+            ).join(
+                PlayerStatistics
+            ).filter(
+                Player.exists,
+                Player.server == server,
+                PlayerStatistics.season == season,
+                text(f"matches_played >= {matches_required}"),
+                Player.character_class.in_(key_classes)
+            ).order_by(
+                PlayerStatistics.points.desc(),
+                Player.username.desc(),
+            ).limit(10)
+        )
+
+        class_based_data[key].extend(query.all())
+
+    overall_data = (
+        db.session.query(
+            Player, PlayerStatistics,
+            (PlayerStatistics.wins + PlayerStatistics.losses + PlayerStatistics.draws).label("matches_played"),
+        ).join(
+            PlayerStatistics
+        ).filter(
+            Player.exists,
+            Player.server == server,
+            PlayerStatistics.season == season,
+            text(f"matches_played >= {matches_required}"),
+        ).order_by(
+            PlayerStatistics.points.desc(),
+            Player.username.desc(),
+        ).limit(10)
+    ).all()
+
+    prizes = {
+        "overall": {
+            1: "25.000 AP",
+            2: "20.000 AP",
+            3: "15.000 AP",
+            4: "10.000 AP",
+            5: " 5.000 AP",
+        },
+        "class_based": {
+            1: "15x Slate Piece of Ancient (uh0000008)",
+            2: "10x Slate Piece of Ancient (uh0000008)",
+            3: "5x Slate Piece of Ancient (uh0000008)",
+        }
+    }
+
+    return render_template("main/winners.html",
+                           class_based_data=class_based_data,
+                           overall_data=overall_data,
+                           prizes=prizes,
+                           matches_required=matches_required)

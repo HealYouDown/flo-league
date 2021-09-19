@@ -1,0 +1,98 @@
+{% set title = "Winners" %}
+{% extends "abstract_base.html" %}
+
+{% block main %}
+    <div class="px-40 my-10">
+        <h1 class="text-3xl text-white">
+            List of all players that meet the requirements in order to earn prizes (>= {{matches_required}} matches played).
+        </h1>
+
+        <hr class="mb-20" />
+
+        <h2 class="text-xl font-extrabold text-white uppercase">Overall Ranking</h2>
+        <small class="text-white text-opacity-70">Only the first <span class="font-bold">5</span> are winners</small>
+        <table class="mt-5 mb-20 text-white border-collapse table-auto">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Player</th>
+                    <th>Server</th>
+                    <th>Class</th>
+                    <th>Points</th>
+                    <th>Matches Count</th>
+                    <th>Wins / Losses / Draws</th>
+                    <th class="text-yellow-500">Prize</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in overall_data %}
+                    {% set player_obj = player[0] %}
+                    {% set statistics = player[1] %}
+                    {% set matches_cnt = player[2] %}
+                    <tr>
+                        <td>{{loop.index}}.</td>
+                        <td>{{player_obj.username}}</td>
+                        <td>{{player_obj.server.name}}</td>
+                        <td>{{player_obj.character_class.name}}</td>
+                        <td>{{statistics.points}}</td>
+                        <td>{{matches_cnt}}</td>
+                        <td>{{statistics.wins}} / {{statistics.losses}} / {{statistics.draws}}</td>
+                        <td class="text-right text-yellow-400">{{prizes["overall"][loop.index]}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr class="mb-20" />
+
+        {% for class in class_based_data %}
+            <h2 class="text-xl font-extrabold text-white uppercase">{{class}}</h2>
+            <small class="text-white text-opacity-70">Only the first <span class="font-bold">3</span> are winners</small>
+            <table class="mt-5 mb-20 text-white border-collapse table-auto">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Player</th>
+                        <th>Server</th>
+                        <th>Class</th>
+                        <th>Points</th>
+                        <th>Matches Count</th>
+                        <th>Wins / Losses / Draws</th>
+                        <th class="text-yellow-500">Prize</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for player in class_based_data[class] %}
+                        {% set player_obj = player[0] %}
+                        {% set statistics = player[1] %}
+                        {% set matches_cnt = player[2] %}
+                        <tr>
+                            <td>{{loop.index}}.</td>
+                            <td>{{player_obj.username}}</td>
+                            <td>{{player_obj.server.name}}</td>
+                            <td>{{player_obj.character_class.name}}</td>
+                            <td>{{statistics.points}}</td>
+                            <td>{{matches_cnt}}</td>
+                            <td>{{statistics.wins}} / {{statistics.losses}} / {{statistics.draws}}</td>
+                            <td class="text-right text-yellow-400">{{prizes["class_based"][loop.index]}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <style>
+        table, th, td {
+            border: 1px solid white !important;
+        }
+
+        th, td {
+            padding: 5px 10px;
+        }
+    </style>
+
+{% endblock %}

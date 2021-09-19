@@ -1,4 +1,4 @@
-/*! tailwindcss v2.1.2 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
+/*! tailwindcss v2.2.15 | MIT License | https://tailwindcss.com *//*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
 /*
 Document
@@ -328,16 +328,6 @@ button {
   background-image: none;
 }
 
-/**
- * Work around a Firefox/IE bug where the transparent `button` background
- * results in a loss of the default `button` focus styles.
- */
-
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-
 fieldset {
   margin: 0;
   padding: 0;
@@ -409,7 +399,7 @@ body {
   box-sizing: border-box; /* 1 */
   border-width: 0; /* 2 */
   border-style: solid; /* 2 */
-  border-color: #e5e7eb; /* 2 */
+  border-color: currentColor; /* 2 */
 }
 
 /*
@@ -457,6 +447,18 @@ textarea::placeholder {
 button,
 [role="button"] {
   cursor: pointer;
+}
+
+/**
+ * Override legacy focus reset from Normalize with modern Firefox focus styles.
+ *
+ * This is actually an improvement over the new defaults in Firefox in our testing,
+ * as it triggers the better focus styles even for links, which still use a dotted
+ * outline in Firefox by default.
+ */
+ 
+:-moz-focusring {
+	outline: auto;
 }
 
 table {
@@ -516,11 +518,20 @@ samp {
 }
 
 /**
- * Make replaced elements `display: block` by default as that's
- * the behavior you want almost all of the time. Inspired by
- * CSS Remedy, with `svg` added as well.
+ * 1. Make replaced elements `display: block` by default as that's
+ *    the behavior you want almost all of the time. Inspired by
+ *    CSS Remedy, with `svg` added as well.
  *
- * https://github.com/mozdevs/cssremedy/issues/14
+ *    https://github.com/mozdevs/cssremedy/issues/14
+ * 
+ * 2. Add `vertical-align: middle` to align replaced elements more
+ *    sensibly by default when overriding `display` by adding a
+ *    utility like `inline`.
+ *
+ *    This can trigger a poorly considered linting error in some
+ *    tools but is included by design.
+ * 
+ *    https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210
  */
 
 img,
@@ -531,8 +542,8 @@ audio,
 iframe,
 embed,
 object {
-  display: block;
-  vertical-align: middle;
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
 }
 
 /**
@@ -548,14 +559,42 @@ video {
   height: auto;
 }
 
-* {
-	--tw-shadow: 0 0 #0000;
+/**
+ * Ensure the default browser behavior of the `hidden` attribute.
+ */
+
+[hidden] {
+  display: none;
+}
+
+*, ::before, ::after {
+	--tw-translate-x: 0;
+	--tw-translate-y: 0;
+	--tw-rotate: 0;
+	--tw-skew-x: 0;
+	--tw-skew-y: 0;
+	--tw-scale-x: 1;
+	--tw-scale-y: 1;
+	--tw-transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+	--tw-border-opacity: 1;
+	border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 	--tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
 	--tw-ring-offset-width: 0px;
 	--tw-ring-offset-color: #fff;
 	--tw-ring-color: rgba(59, 130, 246, 0.5);
 	--tw-ring-offset-shadow: 0 0 #0000;
 	--tw-ring-shadow: 0 0 #0000;
+	--tw-shadow: 0 0 #0000;
+	--tw-blur: var(--tw-empty,/*!*/ /*!*/);
+	--tw-brightness: var(--tw-empty,/*!*/ /*!*/);
+	--tw-contrast: var(--tw-empty,/*!*/ /*!*/);
+	--tw-grayscale: var(--tw-empty,/*!*/ /*!*/);
+	--tw-hue-rotate: var(--tw-empty,/*!*/ /*!*/);
+	--tw-invert: var(--tw-empty,/*!*/ /*!*/);
+	--tw-saturate: var(--tw-empty,/*!*/ /*!*/);
+	--tw-sepia: var(--tw-empty,/*!*/ /*!*/);
+	--tw-drop-shadow: var(--tw-empty,/*!*/ /*!*/);
+	--tw-filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 [type='text'],[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select {
@@ -864,20 +903,13 @@ select {
 .server-link-img {
 	height: 2rem;
 	width: auto;
-	--tw-blur: var(--tw-empty,/*!*/ /*!*/);
-	--tw-brightness: var(--tw-empty,/*!*/ /*!*/);
-	--tw-contrast: var(--tw-empty,/*!*/ /*!*/);
-	--tw-grayscale: var(--tw-empty,/*!*/ /*!*/);
-	--tw-hue-rotate: var(--tw-empty,/*!*/ /*!*/);
-	--tw-invert: var(--tw-empty,/*!*/ /*!*/);
-	--tw-saturate: var(--tw-empty,/*!*/ /*!*/);
-	--tw-sepia: var(--tw-empty,/*!*/ /*!*/);
-	--tw-drop-shadow: var(--tw-empty,/*!*/ /*!*/);
-	filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 	--tw-grayscale: grayscale(100%);
+	filter: var(--tw-filter);
+	filter: var(--tw-filter);
 }
 .server-link-img.active {
 	--tw-grayscale: grayscale(0);
+	filter: var(--tw-filter);
 }
 /* Buttons style for setting match winner */
 .winner-button {
@@ -961,6 +993,10 @@ select {
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
 }
+.my-10 {
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+}
 .mt-4 {
 	margin-top: 1rem;
 }
@@ -990,6 +1026,9 @@ select {
 }
 .mt-3 {
 	margin-top: 0.75rem;
+}
+.mb-20 {
+	margin-bottom: 5rem;
 }
 .mt-5 {
 	margin-top: 1.25rem;
@@ -1098,33 +1137,36 @@ select {
 .flex-grow {
 	flex-grow: 1;
 }
+.table-auto {
+	table-layout: auto;
+}
 .table-fixed {
 	table-layout: fixed;
+}
+.border-collapse {
+	border-collapse: collapse;
 }
 .border-separate {
 	border-collapse: separate;
 }
-.transform {
-	--tw-translate-x: 0;
-	--tw-translate-y: 0;
-	--tw-rotate: 0;
-	--tw-skew-x: 0;
-	--tw-skew-y: 0;
-	--tw-scale-x: 1;
-	--tw-scale-y: 1;
-	transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
 .translate-y-\[4px\] {
 	--tw-translate-y: 4px;
+	transform: var(--tw-transform);
 }
 .rotate-\[-70deg\] {
 	--tw-rotate: -70deg;
+	transform: var(--tw-transform);
 }
 .skew-x-\[-20deg\] {
 	--tw-skew-x: -20deg;
+	transform: var(--tw-transform);
 }
 .skew-x-\[20deg\] {
 	--tw-skew-x: 20deg;
+	transform: var(--tw-transform);
+}
+.transform {
+	transform: var(--tw-transform);
 }
 @-webkit-keyframes bounce {
 
@@ -1170,29 +1212,29 @@ select {
 .grid-cols-2 {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
+.flex-row {
+	flex-direction: row;
+}
 .flex-col {
 	flex-direction: column;
 }
 .flex-col-reverse {
 	flex-direction: column-reverse;
 }
-.flex-row {
-	flex-direction: row;
+.items-start {
+	align-items: flex-start;
 }
 .items-center {
 	align-items: center;
 }
-.items-start {
-	align-items: flex-start;
+.justify-start {
+	justify-content: flex-start;
 }
 .justify-center {
 	justify-content: center;
 }
 .justify-between {
 	justify-content: space-between;
-}
-.justify-start {
-	justify-content: flex-start;
 }
 .justify-evenly {
 	justify-content: space-evenly;
@@ -1395,6 +1437,10 @@ select {
 	padding-left: 0.75rem;
 	padding-right: 0.75rem;
 }
+.px-40 {
+	padding-left: 10rem;
+	padding-right: 10rem;
+}
 .pb-5 {
 	padding-bottom: 1.25rem;
 }
@@ -1404,11 +1450,14 @@ select {
 .pt-5 {
 	padding-top: 1.25rem;
 }
+.text-left {
+	text-align: left;
+}
 .text-center {
 	text-align: center;
 }
-.text-left {
-	text-align: left;
+.text-right {
+	text-align: right;
 }
 .font-mono {
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -1433,11 +1482,18 @@ select {
 	font-size: 1.125rem;
 	line-height: 1.75rem;
 }
+.text-3xl {
+	font-size: 1.875rem;
+	line-height: 2.25rem;
+}
 .font-bold {
 	font-weight: 700;
 }
 .font-semibold {
 	font-weight: 600;
+}
+.font-extrabold {
+	font-weight: 800;
 }
 .uppercase {
 	text-transform: uppercase;
@@ -1502,6 +1558,10 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(173, 95, 51, var(--tw-text-opacity));
 }
+.text-yellow-400 {
+	--tw-text-opacity: 1;
+	color: rgba(251, 191, 36, var(--tw-text-opacity));
+}
 .text-opacity-80 {
 	--tw-text-opacity: 0.8;
 }
@@ -1513,6 +1573,9 @@ select {
 }
 .text-opacity-25 {
 	--tw-text-opacity: 0.25;
+}
+.text-opacity-70 {
+	--tw-text-opacity: 0.7;
 }
 .outline-none {
 	outline: 2px solid transparent;
@@ -1533,20 +1596,12 @@ select {
 .ring-offset-gray-800 {
 	--tw-ring-offset-color: #1f2937;
 }
-.filter {
-	--tw-blur: var(--tw-empty,/*!*/ /*!*/);
-	--tw-brightness: var(--tw-empty,/*!*/ /*!*/);
-	--tw-contrast: var(--tw-empty,/*!*/ /*!*/);
-	--tw-grayscale: var(--tw-empty,/*!*/ /*!*/);
-	--tw-hue-rotate: var(--tw-empty,/*!*/ /*!*/);
-	--tw-invert: var(--tw-empty,/*!*/ /*!*/);
-	--tw-saturate: var(--tw-empty,/*!*/ /*!*/);
-	--tw-sepia: var(--tw-empty,/*!*/ /*!*/);
-	--tw-drop-shadow: var(--tw-empty,/*!*/ /*!*/);
-	filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
 .saturate-150 {
 	--tw-saturate: saturate(1.5);
+	filter: var(--tw-filter);
+}
+.filter {
+	filter: var(--tw-filter);
 }
 /* Own two column css variable which can be set on breakpoints */
 .hover\:border-gray-900:hover {
@@ -1602,18 +1657,22 @@ select {
 
 	.sm\:translate-y-\[8px\] {
 		--tw-translate-y: 8px;
+		transform: var(--tw-transform);
 	}
 
 	.sm\:rotate-\[-55deg\] {
 		--tw-rotate: -55deg;
+		transform: var(--tw-transform);
 	}
 
 	.sm\:skew-x-\[-35deg\] {
 		--tw-skew-x: -35deg;
+		transform: var(--tw-transform);
 	}
 
 	.sm\:skew-x-\[35deg\] {
 		--tw-skew-x: 35deg;
+		transform: var(--tw-transform);
 	}
 
 	.sm\:py-1\.5 {
