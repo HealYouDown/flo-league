@@ -40,5 +40,7 @@ def ensure_admin_user_exists():
 async def lifespan(app: FastAPI):
     # We run those via start.sh now
     # run_migrations()
-    ensure_admin_user_exists()
+
+    # We also dont really need a default admin user anymore
+    # ensure_admin_user_exists()
     yield
