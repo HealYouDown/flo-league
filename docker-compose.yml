@@ -19,7 +19,7 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      DATABASE_URL: ${DATABASE_URL}
       SECRET_KEY: ${SECRET_KEY}
     labels:
       - "traefik.enable=true"
@@ -35,7 +35,7 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: ${API_DOMAIN}
+        VITE_API_URL: ${API_URL}
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
