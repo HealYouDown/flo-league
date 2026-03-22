@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:18.2
+    container_name: flo-league-postgres-dev
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: flo-league
+    ports:
+      - "5555:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: flo-league-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@flo.dev
+      PGADMIN_DEFAULT_PASSWORD: adminpass
+    ports:
+      - "8081:80"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

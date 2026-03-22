@@ -1,0 +1,9 @@
+from pydantic import BaseModel, ConfigDict
+
+
+class ReadUser(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    username: str
+    is_admin: bool
