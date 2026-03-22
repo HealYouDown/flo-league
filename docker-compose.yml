@@ -8,8 +8,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql
-    networks:
-      - backend
 
   backend:
     build:
@@ -18,6 +16,8 @@ services:
     restart: unless-stopped
     depends_on:
       - postgres
+    ports:
+      - "8081:8000"
     environment:
       DATABASE_URL: ${DATABASE_URL}
       SECRET_KEY: ${SECRET_KEY}
@@ -25,11 +25,9 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.backend.rule=Host(`${API_DOMAIN}`)"
       - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls=true"
       - "traefik.http.routers.backend.tls.certresolver=le"
       - "traefik.http.services.backend.loadbalancer.server.port=8000"
-    networks:
-      - backend
-      - traefik
 
   frontend:
     build:
@@ -44,13 +42,10 @@ services:
       - "traefik.http.routers.frontend.tls=true"
       - "traefik.http.routers.frontend.tls.certresolver=le"
       - "traefik.http.services.frontend.loadbalancer.server.port=80"
-    networks:
-      - traefik
 
   traefik:
-    image: traefik:v3.6
+    image: traefik:v3.6.11
     command:
-      - "--api.insecure=true"
       - "--providers.docker=true"
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.le.acme.tlschallenge=true"
@@ -62,13 +57,7 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "traefik_certs:/letsencrypt"
-    networks:
-      - traefik
 
 volumes:
   postgres_data:
   traefik_certs:
-
-networks:
-  backend:
-  traefik:
