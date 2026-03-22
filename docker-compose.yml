@@ -16,8 +16,6 @@ services:
     restart: unless-stopped
     depends_on:
       - postgres
-    ports:
-      - "8081:8000"
     environment:
       DATABASE_URL: ${DATABASE_URL}
       SECRET_KEY: ${SECRET_KEY}
