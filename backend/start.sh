@@ -13,13 +13,13 @@ echo "✅ Database is ready"
 
 # Run migrations (ONLY ONCE)
 echo "🚀 Running migrations..."
-alembic upgrade head
+uv run alembic upgrade head
 
 echo "✅ Migrations done"
 
 # Start server
 echo "🔥 Starting server..."
-exec gunicorn app.main:app \
+exec gunicorn "src.main:create_application()" \
   -k uvicorn.workers.UvicornWorker \
   -w ${UVICORN_WORKERS:-2} \
   -b 0.0.0.0:8000
