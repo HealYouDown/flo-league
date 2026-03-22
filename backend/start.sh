@@ -19,7 +19,7 @@ echo "✅ Migrations done"
 
 # Start server
 echo "🔥 Starting server..."
-exec gunicorn "src.main:create_application()" \
+exec uv run gunicorn "src.main:create_application()" \
   -k uvicorn.workers.UvicornWorker \
   -w ${UVICORN_WORKERS:-2} \
   -b 0.0.0.0:8000
