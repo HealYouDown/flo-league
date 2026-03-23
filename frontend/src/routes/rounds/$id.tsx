@@ -5,6 +5,7 @@ import { LoadingIndicator } from "@/components/loading-indicator"
 import { PageLayout } from "@/components/page-layout"
 import { createFileRoute } from "@tanstack/react-router"
 import { RoundMatchesView } from "@/components/round-matches-view"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 
 export const Route = createFileRoute("/rounds/$id")({
   component: RouteComponent,
@@ -24,6 +25,7 @@ const roundStatusContent = {
 function RouteComponent() {
   const { id } = Route.useParams()
   const { data: round, isPending } = useGetRound(id)
+  useDocumentTitle(round?.name || "")
 
   if (isPending || !round) return <LoadingIndicator />
 

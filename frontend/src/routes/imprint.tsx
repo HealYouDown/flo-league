@@ -1,5 +1,6 @@
 import { PageLayout } from "@/components/page-layout"
 import { createFileRoute } from "@tanstack/react-router"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 
 export const Route = createFileRoute("/imprint")({
   component: RouteComponent,
@@ -15,6 +16,8 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 }
 
 function RouteComponent() {
+  useDocumentTitle("Imprint")
+
   return (
     <PageLayout title="Imprint">
       <div className="max-w-3xl space-y-6">

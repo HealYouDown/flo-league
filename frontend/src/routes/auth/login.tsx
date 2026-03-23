@@ -5,12 +5,14 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { createFileRoute, useNavigate } from "@tanstack/react-router"
 import { useState } from "react"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 
 export const Route = createFileRoute("/auth/login")({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  useDocumentTitle("Login")
   const navigate = useNavigate()
   const { mutate, isPending, error } = useLogin({ onSuccess: () => navigate({ to: "/" }) })
 

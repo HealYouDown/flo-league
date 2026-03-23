@@ -4,6 +4,7 @@ import type { Language, LanguageContent } from "@/lib/language"
 import { useLanguage } from "@/hooks/use-language"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { Highlight } from "@/components/highlight"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 
 export const Route = createFileRoute("/guide")({
   component: RouteComponent,
@@ -106,6 +107,7 @@ const content: Record<Language, LanguageContent> = {
 }
 
 function RouteComponent() {
+  useDocumentTitle("Guide")
   const { lang, setLang } = useLanguage("en")
   const current = content[lang]
 

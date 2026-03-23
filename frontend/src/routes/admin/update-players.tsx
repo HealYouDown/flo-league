@@ -4,12 +4,14 @@ import { useUpdatePlayers } from "@/api/hooks/players"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 
 export const Route = createFileRoute("/admin/update-players")({
   component: RouteComponent,
 })
 
 function RouteComponent() {
+  useDocumentTitle("Manage Players")
   const { mutate, isPending } = useUpdatePlayers()
   const [file, setFile] = useState<File | null>(null)
 

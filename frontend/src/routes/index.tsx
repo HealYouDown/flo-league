@@ -5,6 +5,7 @@ import { PageLayout } from "@/components/page-layout"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@/components/ui/item"
 import { ROUND_MODE_LABELS, ROUND_STATUS_LABELS } from "@/lib/enums"
 import { createFileRoute, Link } from "@tanstack/react-router"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 import { ChevronRightIcon } from "lucide-react"
 import { useMemo } from "react"
 
@@ -49,6 +50,8 @@ function ActiveRounds() {
 }
 
 function RouteComponent() {
+  useDocumentTitle("Flo League")
+
   const { data: seasons, isPending } = useGetSeasons()
 
   const { activeSeasons, finishedSeasons } = useMemo(() => {

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@/components/ui/item"
 import { ROUND_MODE_LABELS, ROUND_STATUS_LABELS } from "@/lib/enums"
 import { createFileRoute, Link } from "@tanstack/react-router"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 import { useMemo } from "react"
 
 export const Route = createFileRoute("/admin/rounds")({
@@ -11,6 +12,7 @@ export const Route = createFileRoute("/admin/rounds")({
 })
 
 function RouteComponent() {
+  useDocumentTitle("Manage Rounds")
   const { data: rounds, isPending } = useGetRounds()
 
   const sortedRounds = useMemo(() => {

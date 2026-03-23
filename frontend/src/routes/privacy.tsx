@@ -1,5 +1,6 @@
 import { PageLayout } from "@/components/page-layout"
 import { createFileRoute } from "@tanstack/react-router"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 
 export const Route = createFileRoute("/privacy")({
   component: RouteComponent,
@@ -24,6 +25,8 @@ function SubSection({ title, children }: { title: string; children: React.ReactN
 }
 
 function RouteComponent() {
+  useDocumentTitle("Privacy Policy")
+
   return (
     <PageLayout title="Privacy Policy">
       <div className="max-w-3xl space-y-8">

@@ -4,6 +4,7 @@ import { createFileRoute } from "@tanstack/react-router"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import type { Language } from "@/lib/language"
 import { Highlight } from "@/components/highlight" // same Highlight wrapper as before
+import { useDocumentTitle } from "@uidotdev/usehooks"
 
 export const Route = createFileRoute("/rules")({
   component: RouteComponent,
@@ -158,6 +159,8 @@ const content: Record<Language, RulesContent> = {
 }
 
 function RouteComponent() {
+  useDocumentTitle("Rules")
+
   const [lang, setLang] = useState<Language>("en")
   const current = content[lang]
 

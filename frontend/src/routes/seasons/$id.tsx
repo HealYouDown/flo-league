@@ -6,6 +6,7 @@ import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@/co
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ROUND_MODE_LABELS, ROUND_STATUS_LABELS } from "@/lib/enums"
 import { createFileRoute, Link } from "@tanstack/react-router"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 import { ChevronRightIcon, Crown, Medal, SwordsIcon, TrophyIcon } from "lucide-react"
 import { useMemo } from "react"
 
@@ -128,6 +129,7 @@ function Rounds({ seasonId }: TabProps) {
 function RouteComponent() {
   const { id: seasonId } = Route.useParams()
   const { data: season, isPending } = useGetSeason(seasonId)
+  useDocumentTitle(season?.name || "")
 
   if (isPending) return <LoadingIndicator />
   if (!season) return <p>An error occured.</p>

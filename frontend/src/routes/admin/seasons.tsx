@@ -5,6 +5,7 @@ import { NewSeasonModal } from "@/components/new-season-modal"
 import { PageLayout } from "@/components/page-layout"
 import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@/components/ui/item"
 import { createFileRoute } from "@tanstack/react-router"
+import { useDocumentTitle } from "@uidotdev/usehooks"
 import { useMemo } from "react"
 
 export const Route = createFileRoute("/admin/seasons")({
@@ -12,6 +13,7 @@ export const Route = createFileRoute("/admin/seasons")({
 })
 
 function RouteComponent() {
+  useDocumentTitle("Manage Seasons")
   const { data: seasons, isPending } = useGetSeasons()
 
   const sortedSeasons = useMemo(() => {
