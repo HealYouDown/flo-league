@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { ROUND_MODE_OPTIONS } from "@/lib/enums"
+import { useNavigate } from "@tanstack/react-router"
 
 interface NewRoundModalProps {
   season: SeasonRead
@@ -41,6 +42,7 @@ const defaultFormValues: FormValues = {
 export function NewRoundModal({ season }: NewRoundModalProps) {
   const [open, setOpen] = useState(false)
   const { mutate, isPending } = useCreateRound()
+  const navigate = useNavigate()
 
   const form = useForm({
     defaultValues: defaultFormValues,
@@ -48,9 +50,10 @@ export function NewRoundModal({ season }: NewRoundModalProps) {
       mutate(
         { body: { season_id: season.id, name: value.name, mode: value.mode } },
         {
-          onSuccess: () => {
+          onSuccess: (data) => {
             form.reset()
             setOpen(false)
+            navigate({ to: "/rounds/$id", params: { id: data.id } })
           },
         },
       )
